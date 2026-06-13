@@ -3,9 +3,11 @@ import Interfaz.ConjuntoEspecialTDA;
 import Imple.ConjuntoEspecial;
 import imple.Cola;
 import imple.Conjunto;
+import imple.DiccionarioSimple;
 import imple.Pila;
 import tda.ColaTDA;
 import tda.ConjuntoTDA;
+import tda.DiccionarioSimpleTDA;
 import tda.PilaTDA;
 
 public class Main {
@@ -104,8 +106,31 @@ public class Main {
         return comunes;
     }
 
-
-
+    /*10) Se define un método que reciba una PilaTDA y devuelva un DiccionarioSimpleTDA, en el cual se guardarán los
+    elementos de la pila como claves, y la cantidad de apariciones de dicho elemento en la pila, como valores */
+    public static DiccionarioSimpleTDA contarAparicionesPila(PilaTDA pilaOriginal) {
+        DiccionarioSimpleTDA diccFinal = new DiccionarioSimple();
+        PilaTDA pilaAux = new Pila();
+        diccFinal.inicializarDiccionario();
+        pilaAux.inicializarPila();
+        while (!pilaOriginal.pilaVacia()) {
+            int topeActual = pilaOriginal.tope();
+            ConjuntoTDA claves = diccFinal.claves();
+            if (claves.pertenece(topeActual)) {
+                int cantidad = diccFinal.recuperar(topeActual);
+                diccFinal.agregar(topeActual, cantidad + 1);
+            } else {
+                diccFinal.agregar(topeActual, 1);
+            }
+            pilaAux.apilar(topeActual);
+            pilaOriginal.desapilar();
+        }
+        while (!pilaAux.pilaVacia()) { //
+            pilaOriginal.apilar(pilaAux.tope()); //
+            pilaAux.desapilar(); //
+        }
+        return diccFinal;
+    }
 
     public static void main(String[] args) {
         /*Testeos para el punto 1*/
