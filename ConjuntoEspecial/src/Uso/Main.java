@@ -1,14 +1,8 @@
 package Uso;
 import Interfaz.ConjuntoEspecialTDA;
 import Imple.ConjuntoEspecial;
-import imple.Cola;
-import imple.Conjunto;
-import imple.DiccionarioSimple;
-import imple.Pila;
-import tda.ColaTDA;
-import tda.ConjuntoTDA;
-import tda.DiccionarioSimpleTDA;
-import tda.PilaTDA;
+import imple.*;
+import tda.*;
 
 public class Main {
 
@@ -161,6 +155,29 @@ public class Main {
         }
         return diccFinal;
     }
+
+    /*12) Se define un método que calcule la suma de los elementos con un valor impar de un
+    ABB. */
+    public static int sumarImparesABB(ABBTDA arbol) {
+        int suma = 0;
+
+        if (arbol.arbolVacio()) {
+            return 0;
+        }
+
+        int valorRaiz = arbol.raiz();
+
+        if (valorRaiz % 2 != 0) {
+            suma = valorRaiz;
+        }
+
+        suma = suma + sumarImparesABB(arbol.hijoIzq());
+        suma = suma + sumarImparesABB(arbol.hijoDer());
+
+        return suma;
+    }
+
+
     public static void imprimirCola(ColaTDA cola) {
         ColaTDA aux = new Cola();
         aux.inicializarCola();
@@ -309,7 +326,18 @@ public class Main {
         System.out.println("Tope pila: " + miPila.tope());
         System.out.println("Primero cola: " + miCola.primero());*/
 
-        
+        /*PUNTO 12*/
+        ABBTDA arbol = new ABB();
+        arbol.inicializarArbol();
+        arbol.agregarElem(50);
+        arbol.agregarElem(45);
+        arbol.agregarElem(53);
+        arbol.agregarElem(27);
+        arbol.agregarElem(60);
+        arbol.agregarElem(52);
+        arbol.agregarElem(17);
+        int resultadoABB = sumarImparesABB(arbol);
+        System.out.println(resultadoABB);
 
 
 
