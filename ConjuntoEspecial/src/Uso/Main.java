@@ -69,6 +69,36 @@ public class Main {
         return repetidos;
     }
 
+    /*8) Se define un método que reciba una ColaTDA y devuelva una nueva ColaTDA con los
+    elementos de la original, sin ninguna repetición. Se debe dejar el primer representante de
+    cada uno de los repetidos, respetando el orden en que aparecen todos los elementos en la
+    original.*/
+
+    public static ColaTDA colaSinRepetidos(ColaTDA colaOriginal) {
+        ConjuntoTDA conjunto = new Conjunto();
+        ColaTDA colaAux = new Cola();
+        ColaTDA colaFinal = new Cola();
+        conjunto.inicializarConjunto();
+        colaAux.inicializarCola();
+        colaFinal.inicializarCola();
+
+        while (!colaOriginal.colaVacia()) {
+            int primero = colaOriginal.primero();
+            colaOriginal.desacolar();
+            colaAux.acolar(primero);
+            if (!conjunto.pertenece(primero)) {
+                conjunto.agregar(primero);
+                colaFinal.acolar(primero);
+            }
+        }
+
+        while (!colaAux.colaVacia()) {
+            int primero = colaAux.primero();
+            colaAux.desacolar();
+            colaOriginal.acolar(primero);
+        }
+        return colaFinal;
+    }
 
     /*9) Se define un metodo que reciba una PilaTDA y una ColaTDA y devuelva un
     ConjuntoTDA con los elementos comunes de la pila y de la cola. */
@@ -131,6 +161,25 @@ public class Main {
         }
         return diccFinal;
     }
+    public static void imprimirCola(ColaTDA cola) {
+        ColaTDA aux = new Cola();
+        aux.inicializarCola();
+
+        System.out.print("[ ");
+        while (!cola.colaVacia()) {
+            int elemento = cola.primero();
+            System.out.print(elemento + " ");
+
+            aux.acolar(elemento);
+            cola.desacolar();
+        }
+        System.out.println("]");
+
+        while (!aux.colaVacia()) {
+            cola.acolar(aux.primero());
+            aux.desacolar();
+        }
+    }
 
     public static void main(String[] args) {
         /*Testeos para el punto 1*/
@@ -174,13 +223,14 @@ public class Main {
         System.out.println(res.error);*/
 
         /*Punto 6*/
-        PilaTDA pila1 = new Pila();
+        /*PilaTDA pila1 = new Pila();
         pila1.inicializarPila();
         pila1.apilar(1);
         pila1.apilar(2);
         pila1.apilar(3);
         pila1.apilar(4);
         System.out.println("La cantidad de elementos pares de la pila es: " + mostrarPorcentajePares(pila1) + "%");
+        */
 
         /*Punto 7*/
         /*PilaTDA miPila = new Pila();
@@ -211,6 +261,17 @@ public class Main {
         System.out.println("Aca se prueba que la pila original no haya perdido elementos revisando el tope actual (deberia ser 10):");
         System.out.println(miPila.tope());*/
 
+        /*Punto 8*/
+        ColaTDA colaOriginal = new Cola();
+        colaOriginal.inicializarCola();
+        colaOriginal.acolar(9);
+        colaOriginal.acolar(10);
+        colaOriginal.acolar(7);
+        colaOriginal.acolar(10);
+        colaOriginal.acolar(5);
+        colaOriginal.acolar(7);
+        ColaTDA colaFinal = colaSinRepetidos(colaOriginal);
+        imprimirCola(colaFinal);
 
         /*Punto 9*/
         /*
