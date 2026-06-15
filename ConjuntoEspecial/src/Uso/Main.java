@@ -1,10 +1,46 @@
 package Uso;
 import Interfaz.ConjuntoEspecialTDA;
 import Imple.ConjuntoEspecial;
+import Interfaz.ConjuntoMamushkaTDA;
+import Imple.ConjuntoMamushka;
 import imple.*;
 import tda.*;
 
 public class Main {
+
+    /*2) Se define un nuevo TDA denominado ConjuntoMamushkaTDA basado en
+    ConjuntoTDA, con la particularidad de que se permite más de una acepción de cada
+    elemento agregado. Tal cual como en ConjuntoTDA, no existe orden alguno. Su
+    especificación se muestra en el anexo, leer detenidamente los comentarios de cada método.*/
+
+    public static void testearMamushka() {
+        ConjuntoMamushkaTDA mamushka = new ConjuntoMamushka();
+        mamushka.inicializar();
+
+        System.out.println("--- PRUEBAS DE INICIALIZACIÓN ---");
+        System.out.println("¿Está vacío al principio?: " + mamushka.estaVacio());
+
+        System.out.println("\n--- PRUEBAS DE GUARDAR ---");
+        mamushka.guardar(5);
+        mamushka.guardar(5);
+        mamushka.guardar(5);
+        mamushka.guardar(8);
+
+        System.out.println("¿Está vacío ahora?: " + mamushka.estaVacio());
+        System.out.println("¿Cuántas veces está el 5?: " + mamushka.perteneceCant(5));
+        System.out.println("¿Cuántas veces está el 8?: " + mamushka.perteneceCant(8));
+
+        System.out.println("\n--- PRUEBA DE ELEGIR ---");
+        System.out.println("Elemento elegido al azar: " + mamushka.elegir());
+
+        System.out.println("\n--- PRUEBAS DE SACAR ---");
+        mamushka.sacar(5);
+        System.out.println("Sacamos un 5. ¿Cuántos quedan?: " + mamushka.perteneceCant(5));
+
+        mamushka.sacar(8);
+        System.out.println("Sacamos el 8. ¿Cuántos quedan?: " + mamushka.perteneceCant(8));
+        System.out.println("Elemento elegido al final: " + mamushka.elegir());
+    }
 
     /*6) Se define un metodo que reciba una PilaTDA y devuelva un float (número real) con
     el porcentaje de cantidad de elementos pares de la pila. */
@@ -199,6 +235,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        // Desde acá llamamos a la prueba para no ensuciar el main principal
+        testearMamushka();
         /*Testeos para el punto 1*/
 
         /*ConjuntoEspecialTDA conjunto = new ConjuntoEspecial();
