@@ -1,0 +1,51 @@
+ConjuntoMamushka/src/Interfaz/ConjuntoMamushkaTDA.java
+  s_0528743218584b::t_ebab1b882d5395 1-24
+README.md
+  s_0528743218584b::t_d6c43b7d326733 31-47
+  s_0528743218584b::t_6f1367d43907ca 53-61
+ConjuntoMamushka/src/Imple/ConjuntoMamushka.java
+  s_0528743218584b::t_0f3e151363cc44 1-131
+MultiPila/src/Imple/MultiPila.java
+  s_0528743218584b::t_d017eaafd1e494 1-178
+DiccionarioSimpleConColaPrioridad/src/Uso/MainDiccionarioSimpleCP.java
+  s_0528743218584b::t_5c01008cc3518b 1-78
+TPO.iml
+  s_0528743218584b::t_5c70224745dfa5 7-10
+Parte2_Arboles.md
+  s_0528743218584b::t_4634b5bb98db60 1-261,264-611
+  s_0528743218584b::t_3fd5aeabd0ae1a 262-263
+MultiPila/src/Interfaz/MultiPilaTDA.java
+  s_0528743218584b::t_ab84e426239906 1-64
+DiccionarioSimpleMod/src/Interfaz/DiccionarioSimpleModTDA.java
+  s_0528743218584b::t_f2e4570cc4e4ca 1-40
+DiccionarioSimpleConColaPrioridad/src/Imple/DiccionarioSimpleCP.java
+  s_0528743218584b::t_ce4b703488b066 1-151
+DiccionarioSimpleMod/src/Imple/DiccionarioSimpleMod.java
+  s_0528743218584b::t_a9270d2ef7e50d 1-131
+ConjuntoEspecial/src/Uso/Main.java
+  s_0528743218584b::t_52699e49f410b2 11-19,42,47-55,86-93,122-131,168-176,201-240,243-250,270-356,378-399,541-619
+DiccionarioSimpleMod/src/Uso/MainDiccionarioSimpleMod.java
+  s_0528743218584b::t_d944e2dafb189a 79,82,86,93
+  s_0528743218584b::t_b58b737e585a93 1-78,80-81,83-85,87-92,94-95
+MultiPila/src/Uso/MainMultiPila.java
+  s_0528743218584b::t_b5538d1616197c 1-135,137-139,141,143-151,153,155-163
+  s_0528743218584b::t_284b678717ce57 136,140,142,152,154
+ConjuntoMamushka/src/Uso/MainConjuntoMamushka.java
+  s_0528743218584b::t_8e7aeff57140b7 1-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "157d037af1d701c2446947703d3eb1cc4aba6641",
+  "prompts": {},
+  "sessions": {
+    "s_0528743218584b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eccff3f0-24ff-4bd1-8d60-a3989a69f992",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
