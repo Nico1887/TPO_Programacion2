@@ -8,16 +8,8 @@ public class Main {
 
     /*6) Se define un metodo que reciba una PilaTDA y devuelva un float (número real) con
     el porcentaje de cantidad de elementos pares de la pila. */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar, contando
-       cuantos elementos son pares y la cantidad total de elementos. Luego se restaura
-       la pila original devolviendo los elementos desde la auxiliar. El porcentaje se
-       calcula como (cantidadPares / cantidadElementos) * 100.
-       COMPLEJIDAD: O(n), donde n es la cantidad de elementos de la pila.
-       JUSTIFICACION: se recorre la pila una vez para contar (O(n)) y una vez para
-       restaurarla (O(n)); 2*O(n) = O(n). Cada operacion de pila es O(1).
-       PRESERVACION: la pila original queda con los mismos elementos y orden ya que
-       todo lo desapilado se vuelve a apilar desde la auxiliar. */
     public static float mostrarPorcentajePares(PilaTDA pila){
+        float porcentajePares = 0;
         float cantidadPares = 0;
         float cantidadElementos = 0;
         PilaTDA aux = new Pila();
@@ -39,20 +31,12 @@ public class Main {
             aux.desapilar();
         }
 
-        return (cantidadPares / cantidadElementos) * 100;
+        return porcentajePares = (cantidadPares / cantidadElementos) * 100;
     }
 
     /*7)Se define un metodo que reciba una PilaTDA y devuelva un ConjuntoTDA con los
     elementos repetidos de la pila. */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Se usa un
-       conjunto auxiliar (auxC) para registrar los elementos ya vistos; si un elemento
-       ya pertenece a auxC significa que esta repetido y se agrega al conjunto resultado.
-       Al finalizar se restaura la pila original desde la pila auxiliar.
-       COMPLEJIDAD: O(n^2) en el peor caso, donde n es la cantidad de elementos.
-       JUSTIFICACION: por cada uno de los n elementos se consultan/agregan elementos en
-       conjuntos implementados con lista enlazada, cuyas operaciones pertenece/agregar
-       son O(n) en el peor caso.
-       PRESERVACION: la pila original se restaura desde auxP con el mismo orden. */
+
     public static ConjuntoTDA elementosRepetidos(PilaTDA pila){
         ConjuntoTDA repetidos = new Conjunto();
         repetidos.inicializarConjunto();
@@ -83,14 +67,7 @@ public class Main {
     elementos de la original, sin ninguna repetición. Se debe dejar el primer representante de
     cada uno de los repetidos, respetando el orden en que aparecen todos los elementos en la
     original.*/
-    /* ESTRATEGIA: se desacola la cola original hacia una cola auxiliar (para luego
-       restaurarla) y se usa un conjunto para detectar elementos ya vistos. La primera
-       vez que aparece un elemento se acola en la cola final, conservando asi el orden
-       de aparicion y el primer representante. Al final se restaura la cola original.
-       COMPLEJIDAD: O(n^2) en el peor caso, donde n es la cantidad de elementos.
-       JUSTIFICACION: se recorre la cola una vez (O(n)), pero por cada elemento se hace
-       pertenece/agregar sobre un conjunto con lista enlazada, que es O(n).
-       PRESERVACION: la cola original se restaura desde colaAux con el mismo orden. */
+
     public static ColaTDA colaSinRepetidos(ColaTDA colaOriginal) {
         ConjuntoTDA conjunto = new Conjunto();
         ColaTDA colaAux = new Cola();
@@ -119,16 +96,6 @@ public class Main {
 
     /*9) Se define un metodo que reciba una PilaTDA y una ColaTDA y devuelva un
     ConjuntoTDA con los elementos comunes de la pila y de la cola. */
-    /* ESTRATEGIA: por cada elemento de la pila (recorrida con una pila auxiliar para
-       restaurarla) se recorre toda la cola comparando contra el tope actual; si
-       coinciden, el elemento se agrega al conjunto de comunes. La cola se restaura con
-       una cola auxiliar en cada vuelta, y la pila se restaura al final.
-       COMPLEJIDAD: O(n*m), donde n es la cantidad de elementos de la pila y m la de la
-       cola.
-       JUSTIFICACION: por cada uno de los n elementos de la pila se recorre la cola
-       completa (m elementos), de ahi el producto n*m.
-       PRESERVACION: la cola se reconstruye en cada iteracion desde auxCola y la pila se
-       reconstruye desde auxP al terminar; ambas quedan intactas. */
     public static ConjuntoTDA obtenerElementosComunes(PilaTDA pila, ColaTDA cola){
         ConjuntoTDA comunes = new Conjunto();
         comunes.inicializarConjunto();
@@ -165,15 +132,6 @@ public class Main {
 
     /*10) Se define un método que reciba una PilaTDA y devuelva un DiccionarioSimpleTDA, en el cual se guardarán los
     elementos de la pila como claves, y la cantidad de apariciones de dicho elemento en la pila, como valores */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Para cada
-       elemento se consulta el conjunto de claves del diccionario: si la clave ya existe
-       se recupera su contador y se reemplaza por contador+1; si no existe se agrega con
-       valor 1. Al final se restaura la pila original desde la auxiliar.
-       COMPLEJIDAD: O(n^2) en el peor caso, donde n es la cantidad de elementos.
-       JUSTIFICACION: se recorre la pila una vez (O(n)), pero por cada elemento se
-       construye/consulta el conjunto de claves y se hacen operaciones de diccionario
-       sobre listas enlazadas, que son O(n).
-       PRESERVACION: la pila original se restaura desde pilaAux con el mismo orden. */
     public static DiccionarioSimpleTDA contarAparicionesPila(PilaTDA pilaOriginal) {
         DiccionarioSimpleTDA diccFinal = new DiccionarioSimple();
         PilaTDA pilaAux = new Pila();
@@ -240,14 +198,6 @@ public class Main {
 
     /*12) Se define un método que calcule la suma de los elementos con un valor impar de un
     ABB. */
-    /* ESTRATEGIA: recorrido recursivo del arbol. Si el arbol esta vacio aporta 0. Si la
-       raiz es impar la suma parte de su valor; luego se suma el resultado recursivo del
-       hijo izquierdo y del hijo derecho.
-       COMPLEJIDAD: recursivo; se visita cada nodo exactamente una vez.
-       JUSTIFICACION: por ser recursivo se aclara que cada nodo del arbol se procesa una
-       unica vez, acumulando los valores impares.
-       PRESERVACION: solo se realizan consultas (raiz, hijoIzq, hijoDer, arbolVacio); no
-       se modifica la estructura del arbol. */
     public static int sumarImparesABB(ABBTDA arbol) {
         int suma = 0;
 
@@ -537,6 +487,7 @@ public class Main {
         arbol.agregarElem(17);
         int resultadoABB = sumarImparesABB(arbol);
         System.out.println(resultadoABB);
+
 
         /*PUNTO 11 - valoresUnicos*/
         System.out.println();
