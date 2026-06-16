@@ -2,6 +2,45 @@ package Imple;
 
 import Interfaz.ConjuntoEspecialTDA;
 
+/*
+ * ===========================================================================
+ * EJERCICIO 1 - ConjuntoEspecial (implementacion)
+ * ===========================================================================
+ *
+ * 1) ESTRATEGIA
+ * ---------------------------------------------------------------------------
+ * Se implementa el ConjuntoEspecialTDA con una lista enlazada dinamica propia
+ * (inner class Nodo con info y sig). No hay orden ni elementos repetidos. A
+ * diferencia de un ConjuntoTDA comun, cada operacion devuelve una Respuesta que
+ * informa, mediante el campo error, si la operacion fue valida:
+ *   - agregar(valor): si el valor NO esta, lo inserta al frente (error=false);
+ *     si ya estaba, no lo agrega y devuelve error=true.
+ *   - sacar(valor): si el valor esta, lo desengancha (error=false); si no esta,
+ *     error=true.
+ *   - elegir(): devuelve en rta un elemento arbitrario (el primero) con
+ *     error=false; sobre conjunto vacio devuelve error=true.
+ *   - pertenece(valor): true si el valor esta en la lista.
+ *   - conjuntoVacio(): true si no hay nodos (c == null).
+ *
+ * 3) COMPLEJIDAD temporal
+ * ---------------------------------------------------------------------------
+ *   inicializarConjunto() -> C (constante)
+ *   agregar(valor)        -> L (lineal)  (pertenece previo recorre la lista)
+ *   sacar(valor)          -> L (lineal)  (busca el valor a eliminar)
+ *   elegir()              -> C (constante)
+ *   pertenece(valor)      -> L (lineal)
+ *   conjuntoVacio()       -> C (constante)
+ *   siendo n la cantidad de elementos del conjunto.
+ *   Referencia: C = constante, L = lineal, P = polinomico.
+ *
+ * 4) JUSTIFICACION
+ * ---------------------------------------------------------------------------
+ * La lista enlazada no tiene acceso directo por valor, por eso toda busqueda
+ * (pertenece, sacar y el pertenece interno de agregar) recorre la lista y es L.
+ * La insercion al frente y las consultas del primer nodo / puntero de cabecera
+ * (elegir, conjuntoVacio, inicializar) son C.
+ * ===========================================================================
+ */
 public class ConjuntoEspecial implements ConjuntoEspecialTDA {
 
     public class Nodo{

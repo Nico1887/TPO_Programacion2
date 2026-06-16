@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TPO.iml" filepath="$PROJECT_DIR$/TPO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConjuntoEspecial/ConjuntoEspecial.iml" filepath="$PROJECT_DIR$/ConjuntoEspecial/ConjuntoEspecial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConjuntoMamushka/ConjuntoMamushka.iml" filepath="$PROJECT_DIR$/ConjuntoMamushka/ConjuntoMamushka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MultiPila/MultiPila.iml" filepath="$PROJECT_DIR$/MultiPila/MultiPila.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DiccionarioSimpleMod/DiccionarioSimpleMod.iml" filepath="$PROJECT_DIR$/DiccionarioSimpleMod/DiccionarioSimpleMod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DiccionarioSimpleConColaPrioridad/DiccionarioSimpleConColaPrioridad.iml" filepath="$PROJECT_DIR$/DiccionarioSimpleConColaPrioridad/DiccionarioSimpleConColaPrioridad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MetodosExternos/MetodosExternos.iml" filepath="$PROJECT_DIR$/MetodosExternos/MetodosExternos.iml" />
     </modules>
   </component>
 </project>

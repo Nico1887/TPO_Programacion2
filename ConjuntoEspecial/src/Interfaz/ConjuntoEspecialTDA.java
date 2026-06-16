@@ -1,5 +1,16 @@
 package Interfaz;
 
+/*
+ * ===========================================================================
+ * EJERCICIO 1 - ConjuntoEspecialTDA
+ * ---------------------------------------------------------------------------
+ * Interfaz de un conjunto (sin orden ni elementos repetidos) en el que cada
+ * operacion devuelve una Respuesta que informa, mediante el campo error, si la
+ * operacion fue valida (por ejemplo: agregar un valor ya existente o sacar un
+ * valor inexistente devuelven error=true). La clase interna Respuesta agrupa el
+ * campo error (boolean) y el campo rta (int) con el valor devuelto por elegir().
+ * ===========================================================================
+ */
 public interface ConjuntoEspecialTDA {
     public class Respuesta {
         public boolean error;

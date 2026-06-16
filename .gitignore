@@ -1,0 +1,8 @@
+# Salida de compilación de IntelliJ (se regenera en cada build)
+/out/
+
+# Archivos .class compilados
+*.class
+
+# Archivos de macOS
+.DS_Store
