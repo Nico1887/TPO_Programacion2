@@ -1,0 +1,51 @@
+ConjuntoEspecial/src/Imple/ConjuntoEspecial.java
+  s_0a31865bf8eac0::t_ae9c23630c778c 25,27-32
+MultiPila/src/Imple/MultiPila.java
+  s_0a31865bf8eac0::t_3b04dc808e73e2 78-80
+  s_0a31865bf8eac0::t_446db6258c9f14 17-18
+  s_0a31865bf8eac0::t_e8fed99d5b60c2 42-44
+  s_0a31865bf8eac0::t_5c282f698a4d8a 121-122,124
+MetodosExternos/src/Uso/Main.java
+  s_0a31865bf8eac0::t_0d1b89d3c5f639 15-16
+  s_0a31865bf8eac0::t_40e3be086734bc 298-302
+  s_0a31865bf8eac0::t_2881ea3991757e 226-228
+  s_0a31865bf8eac0::t_4baae2a2101f61 23-26
+  s_0a31865bf8eac0::t_b696d2f976f8ff 11-13
+  s_0a31865bf8eac0::t_ae7cd0fcd765e7 250-253
+  s_0a31865bf8eac0::t_8a0a3a5c874c25 90-94
+  s_0a31865bf8eac0::t_326e6dd95eed51 163-167
+  s_0a31865bf8eac0::t_58efac4d81dba3 55-59
+  s_0a31865bf8eac0::t_c55bcf420ceecd 194-198
+  s_0a31865bf8eac0::t_3ed2686e6b2c81 123-126
+  s_0a31865bf8eac0::t_d00bf9ce4a8af7 275-279
+DiccionarioSimpleConColaPrioridad/src/Imple/DiccionarioSimpleCP.java
+  s_0a31865bf8eac0::t_dc878132a9eb7e 35,37-42
+  s_0a31865bf8eac0::t_d38961ce054d76 13
+DiccionarioSimpleMod/src/Imple/DiccionarioSimpleMod.java
+  s_0a31865bf8eac0::t_ae288cd0e5c730 114-115
+  s_0a31865bf8eac0::t_d7fad004e8653e 17
+  s_0a31865bf8eac0::t_13a1af60927cde 28,30-31
+  s_0a31865bf8eac0::t_7e360c338916e1 100,107
+  s_0a31865bf8eac0::t_1cd65a88997aa6 82
+  s_0a31865bf8eac0::t_add601cc24458d 64
+  s_0a31865bf8eac0::t_4ffce659255961 48
+  s_0a31865bf8eac0::t_22311345a6a304 53
+ConjuntoMamushka/src/Imple/ConjuntoMamushka.java
+  s_0a31865bf8eac0::t_222b12f4aaa17a 28,30-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "be63f7118b2325a6f3c5b8292e983d9f3a880267",
+  "prompts": {},
+  "sessions": {
+    "s_0a31865bf8eac0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea5c9e05-0297-4349-a74d-d80c6b2eb3c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
