@@ -25,24 +25,14 @@ import Interfaz.ConjuntoMamushkaTDA;
  * - estaVacio(): la lista esta vacia cuando no hay nodos (c == null). Como todo
  *   nodo se elimina al llegar a cantidad 0, c == null equivale a sin acepciones.
  * ----------------------------------------------------------------------------
- * 3) COMPLEJIDAD temporal
+ * 3) COSTO
  * ----------------------------------------------------------------------------
- *   inicializar()      -> C (constante)
- *   guardar(dato)      -> L (lineal)  (busca el dato antes de insertar)
- *   sacar(dato)        -> L (lineal)  (busca el dato para decrementar/eliminar)
- *   elegir()           -> C (constante)
- *   perteneceCant(d)   -> L (lineal)
- *   estaVacio()        -> C (constante)
- *   siendo n la cantidad de valores DISTINTOS guardados en el multiconjunto.
- *   Referencia de costos: C = constante (no depende de n), L = lineal (crece
- *   proporcional a n), P = polinomico (crece con una potencia de n).
- * ----------------------------------------------------------------------------
- * 4) JUSTIFICACION
- * ----------------------------------------------------------------------------
- * Al mantener un solo nodo por valor con un contador, el espacio depende de la
- * cantidad de valores distintos (no de la cantidad total de acepciones) y los
- * recorridos son lineales (L) en esa cantidad. elegir() y estaVacio() son C
- * (constante) porque solo consultan el primer nodo / el puntero de cabecera.
+ *   inicializar()      -> C
+ *   guardar(dato)      -> L  (busca el dato antes de insertar)
+ *   sacar(dato)        -> L  (busca el dato para decrementar/eliminar)
+ *   elegir()           -> C  (devuelve el primer nodo)
+ *   perteneceCant(d)   -> L  (recorre la lista)
+ *   estaVacio()        -> C  (mira el puntero de cabecera)
  * ============================================================================
  */
 public class ConjuntoMamushka implements ConjuntoMamushkaTDA {

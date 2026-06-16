@@ -14,8 +14,8 @@ import imple.Pila;
  *   m -> [tope] -> ... -> [fondo] -> null
  *
  * Las pilas recibidas por parámetro se recorren apoyándose en una pila auxiliar
- * (imple.Pila) y SIEMPRE se restauran antes de retornar, de modo que el llamador
- * no perciba modificación alguna (REGLA DE ORO de la cátedra).
+ * y SIEMPRE se restauran antes de retornar, de modo que el llamador no perciba
+ * modificación alguna.
  */
 public class MultiPila implements MultiPilaTDA {
 
@@ -39,20 +39,9 @@ public class MultiPila implements MultiPilaTDA {
 
     /*
      * apilar: coloca la pila recibida ENCIMA de la multipila, preservando su orden.
-     *
-     * Ejemplo: multipila (tope) 3 - 5 - 7 ; pila recibida (tope) 1 - 9
-     *          resultado (tope) 1 - 9 - 3 - 5 - 7
-     *
-     * Para lograr que el tope de la pila recibida (1) quede como nuevo tope de la
-     * multipila, debemos insertar los elementos de la pila recibida empezando por
-     * el FONDO (9) y terminando por el tope (1). Como una PilaTDA solo da acceso
-     * al tope, la "damos vuelta" a una pila auxiliar para luego recorrerla desde
-     * el fondo hacia el tope, apilando cada elemento en la cabeza de la multipila.
-     *
-     * COMPLEJIDAD: L (lineal), siendo k la cantidad de elementos de la pila recibida.
-     * JUSTIFICACION: se recorre la pila recibida un número constante de veces
-     * (volcado a auxiliar, inserción en la multipila y restauración), cada uno L.
-     * Secuencia de bloques L + L + L -> L (no hay ciclos anidados).
+     * Como una PilaTDA solo da acceso al tope, se vuelca a una auxiliar (queda invertida)
+     * y desde ahi se inserta cada elemento en la cabeza de la multipila.
+     * COSTO: L — recorre la pila recibida unas pocas veces seguidas (sin anidar).
      */
     @Override
     public void apilar(PilaTDA valores) {
@@ -86,19 +75,9 @@ public class MultiPila implements MultiPilaTDA {
     }
 
     /*
-     * desapilar: quita de la multipila los elementos de la pila recibida, pero
-     * SOLO si el tope de la multipila coincide, elemento a elemento, con la pila
-     * recibida (mismo orden). Si no coincide (o la multipila tiene menos elementos
-     * que la pila recibida), no realiza ningún cambio.
-     *
-     * Ejemplo: multipila (tope) 7 - 2 - 8 - 9 ; pila recibida (tope) 7 - 2
-     *          resultado (tope) 8 - 9
-     *          pila recibida (tope) 7 - 2 - 3  ->  no hay cambios.
-     *
-     * COMPLEJIDAD: L (lineal), siendo k la cantidad de elementos de la pila recibida.
-     * JUSTIFICACION: se compara recorriendo la pila recibida y la cima de la
-     * multipila a lo sumo k posiciones; la pila recibida se restaura recorriéndola
-     * otra vez, todo lineal (L) en k.
+     * desapilar: quita de la multipila los elementos de la pila recibida, pero SOLO si el
+     * tope de la multipila coincide, elemento a elemento, con ella; si no, no cambia nada.
+     * COSTO: L — compara y restaura recorriendo la pila recibida (sin anidar).
      */
     @Override
     public void desapilar(PilaTDA valores) {
@@ -139,17 +118,10 @@ public class MultiPila implements MultiPilaTDA {
     }
 
     /*
-     * tope: devuelve una PilaTDA con los primeros 'cantidad' elementos del tope de
-     * la multipila, preservando el orden (el tope de la multipila queda como tope
-     * de la pila devuelta). Si 'cantidad' supera el tamaño, devuelve todos.
+     * tope: devuelve una PilaTDA con los primeros 'cantidad' elementos del tope de la
+     * multipila, preservando el orden (si 'cantidad' supera el tamaño, devuelve todos).
      * No modifica la multipila.
-     *
-     * Ejemplo: multipila (tope) 4 - 2 - 9 - 7 ; cantidad 2 -> (tope) 4 - 2
-     *          cantidad 5 -> (tope) 4 - 2 - 9 - 7
-     *
-     * COMPLEJIDAD: L (lineal), siendo c = min(cantidad, tamaño de la multipila).
-     * JUSTIFICACION: se recorren a lo sumo 'c' nodos de la multipila y se realizan
-     * dos pasadas sobre una pila auxiliar de tamaño c para preservar el orden.
+     * COSTO: L — recorre como mucho 'cantidad' nodos y los reordena con una auxiliar.
      */
     @Override
     public PilaTDA tope(int cantidad) {

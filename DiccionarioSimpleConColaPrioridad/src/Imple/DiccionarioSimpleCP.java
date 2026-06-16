@@ -10,7 +10,7 @@ import imple.*;
  *
  * 1) ESTRATEGIA
  * -------------
- * Implementamos la interfaz tda.DiccionarioSimpleTDA (la del jar) usando como
+ * Implementamos la interfaz tda.DiccionarioSimpleTDA usando como
  * UNICO almacenamiento interno una imple.ColaPrioridad (campo 'cola').
  *
  * El mapeo clave -> valor se logra guardando cada par con:
@@ -32,25 +32,14 @@ import imple.*;
  * NO se usan arreglos ni nodos propios para almacenar: solo la ColaPrioridad.
  *
  *
- * 3) COMPLEJIDAD TEMPORAL
+ * 3) COSTO
  * -----------------------
- * Sea N la cantidad de entradas (claves) del diccionario.
- *   - inicializarDiccionario : C (constante)
- *   - recuperar(clave)       : L (lineal)  (un recorrido completo + restauracion)
- *   - eliminar(clave)        : L (lineal)
- *   - agregar(clave,valor)   : L (lineal)  (eliminar previo L + acolarPrioridad L)
- *   - claves()               : P (polinomico) en el peor caso por el pertenece()
- *                              del Conjunto al insertar cada clave; el recorrido
- *                              es L pero anidado con un pertenece L da P (~N^2).
- *   Referencia: C = constante, L = lineal (crece con N), P = polinomico (~N^2).
- *
- * 4) JUSTIFICACION
- * ----------------
- * La ColaPrioridad es una estructura lineal sin acceso por clave, por lo que
- * cualquier consulta obliga a recorrerla entera (L). El metodo auxiliar
- * 'acolarTodo' mueve los nodos de una cola a otra preservando info y prioridad,
- * lo que nos permite restaurar la cola original sin perder datos. acolarPrioridad
- * de la implementacion del jar inserta ordenado, por eso es L cada insercion.
+ *   - inicializarDiccionario : C
+ *   - recuperar(clave)       : L  (recorre toda la cola y la restaura)
+ *   - eliminar(clave)        : L  (recorre toda la cola y la restaura)
+ *   - agregar(clave,valor)   : L  (eliminar previo + acolar, cada uno L)
+ *   - claves()               : P  (recorre la cola y por cada clave agregar() al
+ *                                  conjunto tambien recorre: un recorrido dentro de otro)
  */
 public class DiccionarioSimpleCP implements DiccionarioSimpleTDA {
 

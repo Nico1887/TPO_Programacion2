@@ -8,28 +8,22 @@ import tda.*;
  * METODOS EXTERNOS DEL TPO (Parte 1, puntos 6 a 15)
  * ----------------------------------------------------------------------------
  * Estos ejercicios NO definen un TDA nuevo: son metodos que reciben las
- * estructuras de la materia (Pila, Cola, ABB, Grafo, DiccionarioSimple,
- * DiccionarioMultiple, Conjunto) provistas por P2lib.jar y devuelven un
- * resultado, preservando siempre las estructuras recibidas.
+ * estructuras provistas (Pila, Cola, ABB, Grafo, DiccionarioSimple,
+ * DiccionarioMultiple, Conjunto) y devuelven un resultado, preservando
+ * siempre las estructuras recibidas.
  *
- * Por eso, tal como pide la consigna, todos viven en un UNICO Main general
- * (los TDA nuevos -puntos 1 a 5- tienen cada uno su propio Main en su modulo).
+ * Por eso todos viven en un UNICO Main general (los TDA nuevos -puntos 1 a 5-
+ * tienen cada uno su propio Main en su modulo).
  * ============================================================================
  */
 public class Main {
 
     /*6) Se define un metodo que reciba una PilaTDA y devuelva un float (número real) con
     el porcentaje de cantidad de elementos pares de la pila. */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar y contando, por un
-       lado, la cantidad de elementos pares y, por otro, la cantidad total de elementos. Al
-       terminar se restaura la pila original desde la auxiliar y se devuelve el porcentaje
-       (pares / total * 100).
-       COMPLEJIDAD: L (lineal) en la cantidad de elementos de la pila. Hay dos ciclos
-       secuenciales (uno para contar, otro para restaurar), cada uno L; L + L sigue siendo L.
-       JUSTIFICACION: las operaciones de pila (tope, apilar, desapilar) sobre la
-       implementacion dinamica son C (constante), por lo que el costo lo fija el recorrido.
-       PRESERVACION: se usa una pila auxiliar y, al finalizar, se devuelven todos los
-       elementos a la pila original, dejandola igual que al inicio. */
+    /* ESTRATEGIA: se desapila hacia una pila auxiliar contando pares y total; al terminar se
+       restaura la pila y se devuelve pares/total*100.
+       COSTO: L — dos recorridos secuenciales de la pila; las operaciones de pila son C.
+       PRESERVACION: se restaura la pila original desde la auxiliar. */
     public static float mostrarPorcentajePares(PilaTDA pila){
         float porcentajePares = 0;
         float cantidadPares = 0;
@@ -58,17 +52,11 @@ public class Main {
 
     /*7)Se define un metodo que reciba una PilaTDA y devuelva un ConjuntoTDA con los
     elementos repetidos de la pila. */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Se mantiene un
-       conjunto auxiliar (vistos) con los elementos ya encontrados: si el tope ya pertenece
-       a vistos es un repetido y se agrega al conjunto resultado; en todo caso se agrega a
-       vistos. Al terminar se restaura la pila original desde la auxiliar.
-       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la pila, pero en
-       cada vuelta pertenece() y agregar() sobre el conjunto (lista enlazada) son L. Ciclo L
-       con cuerpo L -> P.
-       JUSTIFICACION: las operaciones de pila son C, pero las de conjunto recorren la lista
-       interna, lo que agrega el factor lineal que eleva el metodo a P.
-       PRESERVACION: se usa una pila auxiliar y se restaura la pila original al finalizar; el
-       conjunto resultado es una estructura nueva. */
+    /* ESTRATEGIA: se desapila hacia una auxiliar; con un conjunto de vistos, si el tope ya
+       pertenece se agrega al resultado. Al terminar se restaura la pila.
+       COSTO: P — recorrido de la pila con pertenece()/agregar() del conjunto adentro, que
+       tambien recorren (un recorrido dentro de otro).
+       PRESERVACION: se restaura la pila; el conjunto resultado es nuevo. */
     public static ConjuntoTDA elementosRepetidos(PilaTDA pila){
         ConjuntoTDA repetidos = new Conjunto();
         repetidos.inicializarConjunto();
@@ -99,17 +87,11 @@ public class Main {
     elementos de la original, sin ninguna repetición. Se debe dejar el primer representante de
     cada uno de los repetidos, respetando el orden en que aparecen todos los elementos en la
     original.*/
-    /* ESTRATEGIA: se recorre la cola original desacolando cada elemento hacia una cola
-       auxiliar (para poder restaurarla). Con un conjunto se lleva registro de los ya vistos:
-       la primera vez que aparece un elemento se agrega al conjunto y se acola en la cola
-       resultado; las apariciones siguientes se ignoran. Al terminar se restaura la cola
-       original desde la auxiliar.
-       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la cola, con
-       pertenece()/agregar() sobre el conjunto que son L. Ciclo L con cuerpo L -> P.
-       JUSTIFICACION: acolar/desacolar/primero son C; el costo lo aportan las operaciones de
-       conjunto, que recorren la lista interna.
-       PRESERVACION: se usa una cola auxiliar y se devuelve la cola original a su estado
-       inicial; la cola resultado es una estructura nueva. */
+    /* ESTRATEGIA: se desacola hacia una auxiliar; con un conjunto de vistos, el primer
+       representante de cada valor se acola en la cola resultado. Al terminar se restaura.
+       COSTO: P — recorrido de la cola con pertenece()/agregar() del conjunto adentro, que
+       tambien recorren (un recorrido dentro de otro).
+       PRESERVACION: se restaura la cola original; la cola resultado es nueva. */
     public static ColaTDA colaSinRepetidos(ColaTDA colaOriginal) {
         ConjuntoTDA conjunto = new Conjunto();
         ColaTDA colaAux = new Cola();
@@ -138,16 +120,10 @@ public class Main {
 
     /*9) Se define un metodo que reciba una PilaTDA y una ColaTDA y devuelva un
     ConjuntoTDA con los elementos comunes de la pila y de la cola. */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Por cada tope de
-       la pila se recorre toda la cola (desacolando hacia una cola auxiliar y restaurandola)
-       buscando una coincidencia; si el valor esta en ambas se agrega al conjunto resultado.
-       Al terminar se restauran tanto la pila como la cola.
-       COMPLEJIDAD: P (polinomico, ~n*m). Ciclo L sobre la pila con un ciclo L anidado sobre
-       la cola; ciclos anidados -> P.
-       JUSTIFICACION: las operaciones de pila y cola son C, pero el anidamiento de los dos
-       recorridos (por cada elemento de la pila se recorre toda la cola) eleva el metodo a P.
-       PRESERVACION: se usan estructuras auxiliares y se restauran la pila y la cola
-       originales; el conjunto resultado es una estructura nueva. */
+    /* ESTRATEGIA: por cada tope de la pila se recorre toda la cola buscando coincidencia; si
+       esta en ambas se agrega al resultado. Al terminar se restauran pila y cola.
+       COSTO: P — recorrido de la cola anidado dentro del recorrido de la pila.
+       PRESERVACION: se restauran pila y cola; el conjunto resultado es nuevo. */
     public static ConjuntoTDA obtenerElementosComunes(PilaTDA pila, ColaTDA cola){
         ConjuntoTDA comunes = new Conjunto();
         comunes.inicializarConjunto();
@@ -184,17 +160,11 @@ public class Main {
 
     /*10) Se define un método que reciba una PilaTDA y devuelva un DiccionarioSimpleTDA, en el cual se guardarán los
     elementos de la pila como claves, y la cantidad de apariciones de dicho elemento en la pila, como valores */
-    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Por cada tope se
-       consulta el conjunto de claves del diccionario: si la clave ya existe se recupera su
-       cantidad y se reescribe sumando 1; si no existe se agrega con cantidad 1. Al terminar
-       se restaura la pila original desde la auxiliar.
-       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la pila, pero en
-       cada vuelta claves()/pertenece()/recuperar()/agregar() sobre el diccionario y el
-       conjunto son L. Ciclo L con cuerpo L -> P.
-       JUSTIFICACION: las operaciones de pila son C; el factor lineal lo aportan las
-       operaciones de diccionario/conjunto que recorren sus listas internas.
-       PRESERVACION: se usa una pila auxiliar y se restaura la pila original; el diccionario
-       resultado es una estructura nueva. */
+    /* ESTRATEGIA: se desapila hacia una auxiliar; por cada tope, si ya es clave se le suma 1,
+       si no se agrega con 1. Al terminar se restaura la pila.
+       COSTO: P — recorrido de la pila con operaciones de diccionario/conjunto adentro, que
+       tambien recorren (un recorrido dentro de otro).
+       PRESERVACION: se restaura la pila; el diccionario resultado es nuevo. */
     public static DiccionarioSimpleTDA contarAparicionesPila(PilaTDA pilaOriginal) {
         DiccionarioSimpleTDA diccFinal = new DiccionarioSimple();
         PilaTDA pilaAux = new Pila();
@@ -221,20 +191,11 @@ public class Main {
 
     /*11) Se define un método que reciba un DiccionarioMultipleTDA y devuelva una ColaTDA
     con todos los valores del diccionario, sin repetición. */
-    /* ESTRATEGIA: se obtiene el conjunto de claves del diccionario y se recorre
-       eligiendo y sacando cada clave de una copia auxiliar (para no modificar nada del
-       diccionario). Para cada clave se recupera su conjunto de valores y se recorren
-       de la misma forma, usando un conjunto auxiliar (vistos) para deduplicar: solo
-       cuando un valor no pertenece a vistos se lo agrega a vistos y se lo acola en la
-       cola resultado.
-       COMPLEJIDAD: P (polinomico), del orden de k * v operaciones de recorrido, donde k
-       es la cantidad de claves y v la cantidad de valores por clave; cada chequeo de
-       pertenencia/agregar sobre conjuntos con lista enlazada agrega un factor lineal.
-       Ciclo de claves con ciclo anidado de valores y cuerpo lineal -> P (no constante).
-       JUSTIFICACION: se visita cada par (clave, valor) una sola vez; la deduplicacion
-       se apoya en el conjunto auxiliar para no acolar valores repetidos.
-       PRESERVACION: nunca se modifica el diccionario; claves() y recuperar() devuelven
-       conjuntos nuevos que se consumen sobre esas copias, dejando el diccionario intacto. */
+    /* ESTRATEGIA: se recorre una copia de las claves y, por cada una, una copia de sus
+       valores; con un conjunto de vistos se acola cada valor una sola vez.
+       COSTO: P — recorrido de valores anidado dentro del recorrido de claves, con
+       pertenece()/agregar() del conjunto adentro.
+       PRESERVACION: se trabaja sobre copias; el diccionario no se modifica. */
     public static ColaTDA valoresUnicos(DiccionarioMultipleTDA dicc) {
         ColaTDA resultado = new Cola();
         resultado.inicializarCola();
@@ -262,13 +223,9 @@ public class Main {
 
     /*12) Se define un método que calcule la suma de los elementos con un valor impar de un
     ABB. */
-    /* ESTRATEGIA: recorrido recursivo del arbol. Si el arbol esta vacio aporta 0. Se toma el
-       valor de la raiz y, si es impar, se acumula; luego se suma recursivamente lo aportado
-       por el hijo izquierdo y por el hijo derecho.
-       COMPLEJIDAD: L (lineal) en la cantidad de nodos; recursivo, visita cada nodo una vez.
-       JUSTIFICACION: las consultas arbolVacio/raiz/hijoIzq/hijoDer son C (constante) y cada
-       nodo se evalua una sola vez.
-       PRESERVACION: solo se realizan consultas sobre el arbol; no se modifica. */
+    /* ESTRATEGIA: recorrido recursivo; si la raiz es impar se acumula y se suma lo de ambos hijos.
+       COSTO: L — visita cada nodo una vez; las consultas sobre el arbol son C.
+       PRESERVACION: solo consulta el arbol; no lo modifica. */
     public static int sumarImparesABB(ABBTDA arbol) {
         int suma = 0;
 
@@ -290,14 +247,10 @@ public class Main {
 
     /*13) Se define un método que reciba un ABBTDA y devuelva la cantidad de hojas (nodos
     sin hijos) cuyo valor es par. */
-    /* ESTRATEGIA: recorrido recursivo del arbol. Si el arbol esta vacio aporta 0. Un
-       nodo es hoja cuando su hijo izquierdo y su hijo derecho estan vacios; en ese caso
-       cuenta 1 si su raiz es par, 0 si no. Si no es hoja, se suma la cantidad de hojas
-       pares del hijo izquierdo y del hijo derecho.
-       COMPLEJIDAD: L (lineal) en la cantidad de nodos; recursivo, visita cada nodo una vez.
-       JUSTIFICACION: por ser recursivo se aclara que cada nodo se evalua una sola vez;
-       las consultas hijoIzq/hijoDer/arbolVacio/raiz son C (constante).
-       PRESERVACION: solo se realizan consultas sobre el arbol; no se modifica. */
+    /* ESTRATEGIA: recorrido recursivo; una hoja cuenta 1 si es par, y si no es hoja se suman
+       las hojas pares de ambos hijos.
+       COSTO: L — visita cada nodo una vez; las consultas sobre el arbol son C.
+       PRESERVACION: solo consulta el arbol; no lo modifica. */
     public static int hojasPares(ABBTDA arbol) {
         if (arbol.arbolVacio()) {
             return 0;
@@ -319,18 +272,11 @@ public class Main {
     /*14) Se define un método que reciba un GrafoTDA y dos vértices o (origen) y d (destino)
     y devuelva un ConjuntoTDA con los vértices puente p tales que existe arista (o,p) y
     existe arista (p,d). */
-    /* ESTRATEGIA: se recorren todos los vertices del grafo usando una copia del conjunto
-       devuelto por g.vertices() (se elige y se saca cada vertice de esa copia para no
-       perderlo). Para cada vertice p se verifica si existe la arista (o,p) y la arista
-       (p,d); si ambas existen, p es un vertice puente y se agrega al conjunto resultado.
-       COMPLEJIDAD: P (polinomico, ~V^2). Se recorren V vertices (ciclo L) y por cada uno
-       se llama dos veces a existeArista, que en el jar es L. Ciclo L con cuerpo L -> P.
-       JUSTIFICACION: confirmado sobre imple.Grafo del P2lib.jar. mAdy es matriz de
-       adyacencia (acceso mAdy[i][j] es C), pero la consulta es por ETIQUETA de vertice:
-       existeArista resuelve etiqueta->indice con vert2Indice, que recorre etiqs[] de forma
-       lineal (L). Asi cada existeArista es L, y el ciclo sobre V vertices lo eleva a P.
-       PRESERVACION: no se modifica el grafo; se trabaja sobre la copia del conjunto de
-       vertices devuelto por vertices(), que es una estructura nueva. */
+    /* ESTRATEGIA: se recorre una copia de los vertices; cada p es puente si existen las
+       aristas (o,p) y (p,d), y se agrega al resultado.
+       COSTO: P — recorrido de los vertices con existeArista adentro, que es L (busca los
+       vertices); un recorrido dentro de otro.
+       PRESERVACION: se trabaja sobre una copia de los vertices; el grafo no se modifica. */
     public static ConjuntoTDA verticesPuente(GrafoTDA g, int o, int d) {
         ConjuntoTDA resultado = new Conjunto();
         resultado.inicializarConjunto();
@@ -349,18 +295,11 @@ public class Main {
 
     /*15) Se define un método que reciba un GrafoTDA y un vértice v y devuelva el grado del
     vértice, calculado como (aristas que salen de v) - (aristas que llegan a v). */
-    /* ESTRATEGIA: se recorren todos los vertices u del grafo usando una copia del
-       conjunto devuelto por g.vertices(). Por cada u, si existe la arista (v,u) se suma
-       una salida; si existe la arista (u,v) se suma una entrada. El grado resultante es
-       salidas - entradas.
-       COMPLEJIDAD: P (polinomico, ~V^2). Se recorren V vertices (ciclo L) y por cada uno
-       se llama dos veces a existeArista, que en el jar es L. Ciclo L con cuerpo L -> P.
-       JUSTIFICACION: confirmado sobre imple.Grafo del P2lib.jar. mAdy es matriz de
-       adyacencia (acceso C), pero existeArista consulta por etiqueta y usa vert2Indice,
-       que busca la etiqueta en etiqs[] de forma lineal (L); por eso cada existeArista es
-       L y, anidada en el ciclo de V vertices, el metodo queda P.
-       PRESERVACION: no se modifica el grafo; se consume una copia del conjunto de
-       vertices devuelto por vertices(). */
+    /* ESTRATEGIA: se recorre una copia de los vertices; por cada u, (v,u) suma salida y (u,v)
+       suma entrada. Devuelve salidas - entradas.
+       COSTO: P — recorrido de los vertices con existeArista adentro, que es L (busca los
+       vertices); un recorrido dentro de otro.
+       PRESERVACION: se trabaja sobre una copia de los vertices; el grafo no se modifica. */
     public static int gradoVertice(GrafoTDA g, int v) {
         int salidas = 0;
         int entradas = 0;
