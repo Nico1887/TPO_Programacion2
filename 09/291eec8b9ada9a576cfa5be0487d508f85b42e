@@ -1,0 +1,20 @@
+ConjuntoEspecial/src/Uso/Main.java
+  s_c1221a9bb77e02::t_bbc703caaf9d82 292-297
+  s_c1221a9bb77e02::t_75b2ec74358870 322-327
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "09291eec8b9ada9a576cfa5be0487d508f85b42e",
+  "prompts": {},
+  "sessions": {
+    "s_c1221a9bb77e02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "906c1f56-782e-451b-80b9-62711283020b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
