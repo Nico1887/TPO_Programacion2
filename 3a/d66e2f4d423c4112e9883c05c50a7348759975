@@ -1,0 +1,34 @@
+ConjuntoEspecial/src/Uso/Main.java
+  s_0a31865bf8eac0::t_ccada78eb2fe5e 168-177
+  s_0a31865bf8eac0::t_ac0d90e2a59e41 88-98
+  s_0a31865bf8eac0::t_50de9fe6a51d12 129-139
+  s_0a31865bf8eac0::t_c2de723cba9597 292-298
+  s_0a31865bf8eac0::t_4eacd758b53b48 50-59
+  s_0a31865bf8eac0::t_07ff95bad88f12 411-412
+  s_0a31865bf8eac0::t_28759d3c376dc6 214-224
+  s_0a31865bf8eac0::t_1e0a01ae016d8f 15-18
+ConjuntoEspecial/src/Imple/ConjuntoEspecial.java
+  s_0a31865bf8eac0::t_a109a76d4ef764 5-43
+ConjuntoEspecial/src/Interfaz/ConjuntoEspecialTDA.java
+  s_0a31865bf8eac0::t_84dd655993702d 3-13
+ConjuntoEspecial/src/Imple/ConjuntoMamushka.java
+  s_0a31865bf8eac0::t_d50194ea065f56 4-42
+ConjuntoEspecial/src/Interfaz/ConjuntoMamushkaTDA.java
+  s_0a31865bf8eac0::t_5249f9cdfd880a 3-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "3ad66e2f4d423c4112e9883c05c50a7348759975",
+  "prompts": {},
+  "sessions": {
+    "s_0a31865bf8eac0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea5c9e05-0297-4349-a74d-d80c6b2eb3c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
