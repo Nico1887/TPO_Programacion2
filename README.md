@@ -28,71 +28,37 @@ Implementar nuevos TDA y resolver problemas utilizando exclusivamente las estruc
 
 ## Parte 1 — Implementación y Resolución
 
-| # | Ejercicio | Estado |
-|---|------------|---------|
-| 1 | ConjuntoEspecialTDA | ✔️ |
-| 2 | ConjuntoMamushkaTDA | ⬜ |
-| 3 | MultiPilaTDA | ⬜ |
-| 4 | DiccionarioSimpleModTDA | ⬜ |
-| 5 | DiccionarioSimpleTDA usando ColaPrioridadTDA | ⬜ |
-| 6 | % de pares en pila | ⬜ |
-| 7 | Repetidos en pila | ⬜ |
-| 8 | Cola sin repetidos | ⬜ |
-| 9 | Intersección pila-cola | ⬜ |
-| 10 | Frecuencias en pila | ⬜ |
-| 11 | Valores únicos de DiccionarioMultiple | ⬜ |
-| 12 | Suma de impares ABB | ⬜ |
-| 13 | Hojas pares ABB | ⬜ |
-| 14 | Vértices puente en grafo | ⬜ |
-| 15 | Grado de vértice | ⬜ |
+| # | Ejercicio | Estado | Ubicación |
+|---|------------|---------|-----------|
+| 1 | ConjuntoEspecialTDA | ✔️ | `ConjuntoEspecial/src` |
+| 2 | ConjuntoMamushkaTDA | ✔️ | `ConjuntoMamushka/src` |
+| 3 | MultiPilaTDA | ✔️ | `MultiPila/src` |
+| 4 | DiccionarioSimpleModTDA | ✔️ | `DiccionarioSimpleMod/src` |
+| 5 | DiccionarioSimpleTDA usando ColaPrioridadTDA | ✔️ | `DiccionarioSimpleConColaPrioridad/src` |
+| 6 | % de pares en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 7 | Repetidos en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 8 | Cola sin repetidos | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 9 | Intersección pila-cola | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 10 | Frecuencias en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 11 | Valores únicos de DiccionarioMultiple | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 12 | Suma de impares ABB | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 13 | Hojas pares ABB | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 14 | Vértices puente en grafo | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 15 | Grado de vértice | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
 
 ---
 
 ## Parte 2 — Árboles
 
-### AVL #16
-- [ ] Agregar 20
-- [ ] Agregar 29
-- [ ] Agregar 21
-- [ ] Agregar 12
-- [ ] Agregar 7
-- [ ] Eliminar 20
+✔️ Resolución teórica paso a paso (con diagramas, rotaciones, factores de balance, splits/merges) en **[`Parte2_Arboles.md`](Parte2_Arboles.md)**.
 
-### AVL #17
-- [ ] Agregar 30
-- [ ] Agregar 36
-- [ ] Agregar 10
-- [ ] Agregar 15
-- [ ] Agregar 12
-- [ ] Eliminar 30
-
-### AVL #18
-- [ ] Agregar 8
-- [ ] Agregar 5
-- [ ] Agregar 6
-- [ ] Agregar 3
-- [ ] Agregar 1
-- [ ] Eliminar 3
-
-### Árbol B Orden 4
-- [ ] Agregar 82
-- [ ] Agregar 12
-- [ ] Agregar 102
-- [ ] Agregar 36
-- [ ] Agregar 61
-- [ ] Eliminar 82
-- [ ] Eliminar 36
-- [ ] Eliminar 102
-
-### Árbol B Orden 5
-- [ ] Agregar 53
-- [ ] Agregar 62
-- [ ] Agregar 31
-- [ ] Agregar 105
-- [ ] Agregar 85
-- [ ] Agregar 55
-- [ ] Eliminar 105
-- [ ] Eliminar 62
+| # | Tipo | Estado |
+|---|------|--------|
+| 16 | AVL (20, 29, 21, 12, 7, −20) | ✔️ |
+| 17 | AVL (30, 36, 10, 15, 12, −30) | ✔️ |
+| 18 | AVL (8, 5, 6, 3, 1, −3) | ✔️ |
+| 19 | Árbol B orden 4 | ✔️ |
+| 20 | Árbol B orden 5 | ✔️ |
 
 ---
 
