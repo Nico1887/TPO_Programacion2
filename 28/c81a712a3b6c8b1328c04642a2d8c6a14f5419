@@ -1,0 +1,42 @@
+ConjuntoMamushka/src/Imple/ConjuntoMamushka.java
+  s_c1221a9bb77e02::t_6e5ae60a062e69 30-35,37-38
+  s_c1221a9bb77e02::t_cfd3e0a1b9f870 44-45
+DiccionarioSimpleMod/src/Imple/DiccionarioSimpleMod.java
+  s_c1221a9bb77e02::t_52df008ab9adba 121-124
+  s_c1221a9bb77e02::t_0d0164d157b22b 55
+  s_c1221a9bb77e02::t_b03c319a84f455 31-33
+  s_c1221a9bb77e02::t_16972cb8d4c67e 50
+  s_c1221a9bb77e02::t_e7cb1ae875016b 87
+  s_c1221a9bb77e02::t_18d82b14551850 66,68-69
+  s_c1221a9bb77e02::t_1831610f88fa68 105,113
+MultiPila/src/Imple/MultiPila.java
+  s_c1221a9bb77e02::t_ce54b3e5fb5752 150
+  s_c1221a9bb77e02::t_f403440b619fcc 52,54-55
+  s_c1221a9bb77e02::t_ce0225c77fad8a 98,101
+  s_c1221a9bb77e02::t_f9118d0d60987c 10-11
+DiccionarioSimpleConColaPrioridad/src/Imple/DiccionarioSimpleCP.java
+  s_c1221a9bb77e02::t_e437267a61d1a6 53
+  s_c1221a9bb77e02::t_17c7460fd1add8 50
+  s_c1221a9bb77e02::t_b82ceb6182ea2c 38-45
+ConjuntoEspecial/src/Uso/Main.java
+  s_c1221a9bb77e02::t_66ea1fa5f6e6d0 263,265
+  s_c1221a9bb77e02::t_cc8a0d49664132 320-321,323
+  s_c1221a9bb77e02::t_eafd35baa8f41a 203-204,206
+  s_c1221a9bb77e02::t_44a0f1ecd84582 292-293,295
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "28c81a712a3b6c8b1328c04642a2d8c6a14f5419",
+  "prompts": {},
+  "sessions": {
+    "s_c1221a9bb77e02": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "906c1f56-782e-451b-80b9-62711283020b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
