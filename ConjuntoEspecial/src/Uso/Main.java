@@ -289,10 +289,12 @@ public class Main {
        devuelto por g.vertices() (se elige y se saca cada vertice de esa copia para no
        perderlo). Para cada vertice p se verifica si existe la arista (o,p) y la arista
        (p,d); si ambas existen, p es un vertice puente y se agrega al conjunto resultado.
-       COMPLEJIDAD: recorre V vertices -> ciclo L; con existeArista C (p.ej. matriz de
-       adyacencia) el total queda L. Si existeArista fuese L, el ciclo lo elevaria a P.
-       JUSTIFICACION: se recorre el conjunto de vertices una sola vez y por cada uno se
-       hacen dos consultas existeArista (costo C o L segun la implementacion del jar).
+       COMPLEJIDAD: P (polinomico, ~V^2). Se recorren V vertices (ciclo L) y por cada uno
+       se llama dos veces a existeArista, que en el jar es L. Ciclo L con cuerpo L -> P.
+       JUSTIFICACION: confirmado sobre imple.Grafo del P2lib.jar. mAdy es matriz de
+       adyacencia (acceso mAdy[i][j] es C), pero la consulta es por ETIQUETA de vertice:
+       existeArista resuelve etiqueta->indice con vert2Indice, que recorre etiqs[] de forma
+       lineal (L). Asi cada existeArista es L, y el ciclo sobre V vertices lo eleva a P.
        PRESERVACION: no se modifica el grafo; se trabaja sobre la copia del conjunto de
        vertices devuelto por vertices(), que es una estructura nueva. */
     public static ConjuntoTDA verticesPuente(GrafoTDA g, int o, int d) {
@@ -317,10 +319,12 @@ public class Main {
        conjunto devuelto por g.vertices(). Por cada u, si existe la arista (v,u) se suma
        una salida; si existe la arista (u,v) se suma una entrada. El grado resultante es
        salidas - entradas.
-       COMPLEJIDAD: recorre V vertices -> ciclo L; con existeArista C el total queda L
-       (si existeArista fuese L, el ciclo lo elevaria a P).
-       JUSTIFICACION: se recorre una sola vez el conjunto de vertices y por cada uno se
-       hacen dos consultas existeArista de costo C o L segun la implementacion.
+       COMPLEJIDAD: P (polinomico, ~V^2). Se recorren V vertices (ciclo L) y por cada uno
+       se llama dos veces a existeArista, que en el jar es L. Ciclo L con cuerpo L -> P.
+       JUSTIFICACION: confirmado sobre imple.Grafo del P2lib.jar. mAdy es matriz de
+       adyacencia (acceso C), pero existeArista consulta por etiqueta y usa vert2Indice,
+       que busca la etiqueta en etiqs[] de forma lineal (L); por eso cada existeArista es
+       L y, anidada en el ciclo de V vertices, el metodo queda P.
        PRESERVACION: no se modifica el grafo; se consume una copia del conjunto de
        vertices devuelto por vertices(). */
     public static int gradoVertice(GrafoTDA g, int v) {
