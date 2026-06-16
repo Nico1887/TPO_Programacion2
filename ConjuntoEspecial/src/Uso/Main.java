@@ -200,9 +200,10 @@ public class Main {
        de la misma forma, usando un conjunto auxiliar (vistos) para deduplicar: solo
        cuando un valor no pertenece a vistos se lo agrega a vistos y se lo acola en la
        cola resultado.
-       COMPLEJIDAD: O(k * v) en cantidad de operaciones de recorrido, donde k es la
-       cantidad de claves y v la cantidad de valores por clave; cada chequeo de
+       COMPLEJIDAD: P (polinomico), del orden de k * v operaciones de recorrido, donde k
+       es la cantidad de claves y v la cantidad de valores por clave; cada chequeo de
        pertenencia/agregar sobre conjuntos con lista enlazada agrega un factor lineal.
+       Ciclo de claves con ciclo anidado de valores y cuerpo lineal -> P (no constante).
        JUSTIFICACION: se visita cada par (clave, valor) una sola vez; la deduplicacion
        se apoya en el conjunto auxiliar para no acolar valores repetidos.
        PRESERVACION: nunca se modifica el diccionario; claves() y recuperar() devuelven
@@ -259,9 +260,9 @@ public class Main {
        nodo es hoja cuando su hijo izquierdo y su hijo derecho estan vacios; en ese caso
        cuenta 1 si su raiz es par, 0 si no. Si no es hoja, se suma la cantidad de hojas
        pares del hijo izquierdo y del hijo derecho.
-       COMPLEJIDAD: recursivo; se visita cada nodo exactamente una vez.
+       COMPLEJIDAD: L (lineal) en la cantidad de nodos; recursivo, visita cada nodo una vez.
        JUSTIFICACION: por ser recursivo se aclara que cada nodo se evalua una sola vez;
-       las consultas hijoIzq/hijoDer/arbolVacio/raiz son O(1).
+       las consultas hijoIzq/hijoDer/arbolVacio/raiz son C (constante).
        PRESERVACION: solo se realizan consultas sobre el arbol; no se modifica. */
     public static int hojasPares(ABBTDA arbol) {
         if (arbol.arbolVacio()) {
@@ -288,10 +289,10 @@ public class Main {
        devuelto por g.vertices() (se elige y se saca cada vertice de esa copia para no
        perderlo). Para cada vertice p se verifica si existe la arista (o,p) y la arista
        (p,d); si ambas existen, p es un vertice puente y se agrega al conjunto resultado.
-       COMPLEJIDAD: O(V) consultas de aristas, donde V es la cantidad de vertices; cada
-       agregar al conjunto resultado agrega un factor lineal en el peor caso.
+       COMPLEJIDAD: recorre V vertices -> ciclo L; con existeArista C (p.ej. matriz de
+       adyacencia) el total queda L. Si existeArista fuese L, el ciclo lo elevaria a P.
        JUSTIFICACION: se recorre el conjunto de vertices una sola vez y por cada uno se
-       hacen dos consultas existeArista que son O(1)/O(log) segun la implementacion.
+       hacen dos consultas existeArista (costo C o L segun la implementacion del jar).
        PRESERVACION: no se modifica el grafo; se trabaja sobre la copia del conjunto de
        vertices devuelto por vertices(), que es una estructura nueva. */
     public static ConjuntoTDA verticesPuente(GrafoTDA g, int o, int d) {
@@ -316,9 +317,10 @@ public class Main {
        conjunto devuelto por g.vertices(). Por cada u, si existe la arista (v,u) se suma
        una salida; si existe la arista (u,v) se suma una entrada. El grado resultante es
        salidas - entradas.
-       COMPLEJIDAD: O(V) consultas de aristas, donde V es la cantidad de vertices.
+       COMPLEJIDAD: recorre V vertices -> ciclo L; con existeArista C el total queda L
+       (si existeArista fuese L, el ciclo lo elevaria a P).
        JUSTIFICACION: se recorre una sola vez el conjunto de vertices y por cada uno se
-       hacen dos consultas existeArista de costo O(1)/O(log) segun la implementacion.
+       hacen dos consultas existeArista de costo C o L segun la implementacion.
        PRESERVACION: no se modifica el grafo; se consume una copia del conjunto de
        vertices devuelto por vertices(). */
     public static int gradoVertice(GrafoTDA g, int v) {

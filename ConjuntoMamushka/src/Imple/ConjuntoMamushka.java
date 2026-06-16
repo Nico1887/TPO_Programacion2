@@ -27,20 +27,22 @@ import Interfaz.ConjuntoMamushkaTDA;
  * ----------------------------------------------------------------------------
  * 3) COMPLEJIDAD temporal
  * ----------------------------------------------------------------------------
- *   inicializar()      -> O(1)
- *   guardar(dato)      -> O(n)  (busca el dato antes de insertar)
- *   sacar(dato)        -> O(n)  (busca el dato para decrementar/eliminar)
- *   elegir()           -> O(1)
- *   perteneceCant(d)   -> O(n)
- *   estaVacio()        -> O(1)
+ *   inicializar()      -> C (constante)
+ *   guardar(dato)      -> L (lineal)  (busca el dato antes de insertar)
+ *   sacar(dato)        -> L (lineal)  (busca el dato para decrementar/eliminar)
+ *   elegir()           -> C (constante)
+ *   perteneceCant(d)   -> L (lineal)
+ *   estaVacio()        -> C (constante)
  *   siendo n la cantidad de valores DISTINTOS guardados en el multiconjunto.
+ *   Referencia de costos: C = constante (no depende de n), L = lineal (crece
+ *   proporcional a n), P = polinomico (crece con una potencia de n).
  * ----------------------------------------------------------------------------
  * 4) JUSTIFICACION
  * ----------------------------------------------------------------------------
  * Al mantener un solo nodo por valor con un contador, el espacio depende de la
  * cantidad de valores distintos (no de la cantidad total de acepciones) y los
- * recorridos son lineales en esa cantidad. elegir() y estaVacio() son O(1)
- * porque solo consultan el primer nodo / el puntero de cabecera.
+ * recorridos son lineales (L) en esa cantidad. elegir() y estaVacio() son C
+ * (constante) porque solo consultan el primer nodo / el puntero de cabecera.
  * ============================================================================
  */
 public class ConjuntoMamushka implements ConjuntoMamushkaTDA {

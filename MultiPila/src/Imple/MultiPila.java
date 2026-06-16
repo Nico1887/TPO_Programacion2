@@ -7,7 +7,8 @@ import imple.Pila;
 /*
  * IMPLEMENTACION de MultiPilaTDA con estructura dinámica propia (lista enlazada
  * con inner class Nodo). El tope de la multipila es la CABEZA de la lista (m),
- * de modo que apilar/desapilar en la cabeza es O(1).
+ * de modo que apilar/desapilar en la cabeza es C (constante).
+ * Referencia de costos: C = constante, L = lineal, P = polinomico.
  *
  * Representación interna:
  *   m -> [tope] -> ... -> [fondo] -> null
@@ -48,9 +49,10 @@ public class MultiPila implements MultiPilaTDA {
      * al tope, la "damos vuelta" a una pila auxiliar para luego recorrerla desde
      * el fondo hacia el tope, apilando cada elemento en la cabeza de la multipila.
      *
-     * COMPLEJIDAD: O(k), siendo k la cantidad de elementos de la pila recibida.
+     * COMPLEJIDAD: L (lineal), siendo k la cantidad de elementos de la pila recibida.
      * JUSTIFICACION: se recorre la pila recibida un número constante de veces
-     * (volcado a auxiliar, inserción en la multipila y restauración), cada uno O(k).
+     * (volcado a auxiliar, inserción en la multipila y restauración), cada uno L.
+     * Secuencia de bloques L + L + L -> L (no hay ciclos anidados).
      */
     @Override
     public void apilar(PilaTDA valores) {
@@ -93,10 +95,10 @@ public class MultiPila implements MultiPilaTDA {
      *          resultado (tope) 8 - 9
      *          pila recibida (tope) 7 - 2 - 3  ->  no hay cambios.
      *
-     * COMPLEJIDAD: O(k), siendo k la cantidad de elementos de la pila recibida.
+     * COMPLEJIDAD: L (lineal), siendo k la cantidad de elementos de la pila recibida.
      * JUSTIFICACION: se compara recorriendo la pila recibida y la cima de la
      * multipila a lo sumo k posiciones; la pila recibida se restaura recorriéndola
-     * otra vez, todo lineal en k.
+     * otra vez, todo lineal (L) en k.
      */
     @Override
     public void desapilar(PilaTDA valores) {
@@ -145,7 +147,7 @@ public class MultiPila implements MultiPilaTDA {
      * Ejemplo: multipila (tope) 4 - 2 - 9 - 7 ; cantidad 2 -> (tope) 4 - 2
      *          cantidad 5 -> (tope) 4 - 2 - 9 - 7
      *
-     * COMPLEJIDAD: O(c), siendo c = min(cantidad, tamaño de la multipila).
+     * COMPLEJIDAD: L (lineal), siendo c = min(cantidad, tamaño de la multipila).
      * JUSTIFICACION: se recorren a lo sumo 'c' nodos de la multipila y se realizan
      * dos pasadas sobre una pila auxiliar de tamaño c para preservar el orden.
      */
