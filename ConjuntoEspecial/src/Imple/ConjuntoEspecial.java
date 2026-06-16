@@ -22,23 +22,14 @@ import Interfaz.ConjuntoEspecialTDA;
  *   - pertenece(valor): true si el valor esta en la lista.
  *   - conjuntoVacio(): true si no hay nodos (c == null).
  *
- * 3) COMPLEJIDAD temporal
+ * 3) COSTO
  * ---------------------------------------------------------------------------
- *   inicializarConjunto() -> C (constante)
- *   agregar(valor)        -> L (lineal)  (pertenece previo recorre la lista)
- *   sacar(valor)          -> L (lineal)  (busca el valor a eliminar)
- *   elegir()              -> C (constante)
- *   pertenece(valor)      -> L (lineal)
- *   conjuntoVacio()       -> C (constante)
- *   siendo n la cantidad de elementos del conjunto.
- *   Referencia: C = constante, L = lineal, P = polinomico.
- *
- * 4) JUSTIFICACION
- * ---------------------------------------------------------------------------
- * La lista enlazada no tiene acceso directo por valor, por eso toda busqueda
- * (pertenece, sacar y el pertenece interno de agregar) recorre la lista y es L.
- * La insercion al frente y las consultas del primer nodo / puntero de cabecera
- * (elegir, conjuntoVacio, inicializar) son C.
+ *   inicializarConjunto() -> C
+ *   agregar(valor)        -> L  (pertenece previo recorre la lista)
+ *   sacar(valor)          -> L  (busca el valor a eliminar)
+ *   elegir()              -> C  (devuelve el primer nodo)
+ *   pertenece(valor)      -> L  (recorre la lista)
+ *   conjuntoVacio()       -> C  (mira el puntero de cabecera)
  * ===========================================================================
  */
 public class ConjuntoEspecial implements ConjuntoEspecialTDA {

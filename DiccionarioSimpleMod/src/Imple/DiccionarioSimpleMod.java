@@ -14,7 +14,7 @@ import Interfaz.DiccionarioSimpleModTDA;
  * Se implementa el diccionario con una lista enlazada simple propia. Cada
  * nodo guarda: clave, valor y factorMod (cantidad de modificaciones del
  * valor). La lista NO se ordena: se inserta al frente como en las
- * implementaciones dinamicas de catedra.
+ * implementaciones dinamicas.
  *
  *   - agregar(clave, valor):
  *       * si la clave NO existe -> se crea un nodo nuevo con factorMod = 0.
@@ -25,12 +25,10 @@ import Interfaz.DiccionarioSimpleModTDA;
  *   - recuperarMod(clave): devuelve el factorMod (clave supuesta existente).
  *   - claves(): construye y devuelve un new imple.Conjunto con las claves.
  *
- * 4) JUSTIFICACION
+ * 3) COSTO
  * ---------------------------------------------------------------------------
- * Se usa un metodo auxiliar Clave2Nodo que recorre linealmente la lista.
- * Todas las operaciones que buscan una clave son L (lineal) porque en el peor
- * caso recorren toda la lista. La complejidad se detalla en cada metodo.
- * Referencia: C = constante, L = lineal, P = polinomico (ciclos anidados).
+ * Se apoya en el auxiliar Clave2Nodo, que recorre la lista (L). El costo de
+ * cada metodo se aclara en su comentario.
  * ===========================================================================
  */
 public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
@@ -47,12 +45,12 @@ public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
 
     @Override
     public void inicializarDiccionario() {
-        // C (constante): solo apunta el origen a null.
+        // COSTO: C — solo apunta el origen a null.
         origen = null;
     }
 
     // Devuelve el nodo de la clave o null si no existe.
-    // COMPLEJIDAD: L (lineal) - recorre la lista en el peor caso.
+    // COSTO: L — recorre la lista.
     private Nodo Clave2Nodo(int clave) {
         Nodo aux = origen; // nodo viajero
         while (aux != null && aux.clave != clave) {
@@ -63,10 +61,7 @@ public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
 
     @Override
     public void agregar(int clave, int valor) {
-        // COMPLEJIDAD: L (lineal) - por la busqueda de la clave (Clave2Nodo).
-        // JUSTIFICACION: en el peor caso la clave no existe y se recorre
-        // toda la lista (L); el alta/actualizacion en si es C (constante).
-        // Secuencia L + C -> gana el mayor -> L.
+        // COSTO: L — busca la clave con Clave2Nodo (recorre la lista); el alta/update es C.
         Nodo nc = Clave2Nodo(clave);
         if (nc == null) {
             // La clave no existe: alta nueva, factorMod arranca en 0.
@@ -84,7 +79,7 @@ public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
 
     @Override
     public void eliminar(int clave) {
-        // COMPLEJIDAD: L (lineal) - recorre la lista buscando el predecesor.
+        // COSTO: L — recorre la lista buscando el predecesor.
         if (origen != null) {
             if (origen.clave == clave) { // es el primero
                 origen = origen.sig;
@@ -102,26 +97,22 @@ public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
 
     @Override
     public int recuperar(int clave) {
-        // COMPLEJIDAD: L (lineal) - por la busqueda de la clave.
-        // Se supone la clave existente (consigna).
+        // COSTO: L — busca la clave (recorre la lista). Se supone la clave existente.
         Nodo nc = Clave2Nodo(clave);
         return nc.valor;
     }
 
     @Override
     public int recuperarMod(int clave) {
-        // COMPLEJIDAD: L (lineal) - por la busqueda de la clave.
-        // Se supone la clave existente (consigna).
+        // COSTO: L — busca la clave (recorre la lista). Se supone la clave existente.
         Nodo nc = Clave2Nodo(clave);
         return nc.factorMod;
     }
 
     @Override
     public ConjuntoTDA claves() {
-        // COMPLEJIDAD: P (polinomico, ~n^2) en el peor caso.
-        // JUSTIFICACION: se recorre la lista (L) y por cada clave se llama a
-        // agregar del Conjunto, que internamente verifica pertenencia (L).
-        // Ciclo con cuerpo lineal -> L dentro de L -> P (cuadratico).
+        // COSTO: P — recorre la lista y por cada clave agregar() al conjunto tambien
+        //          recorre: un recorrido dentro de otro.
         ConjuntoTDA c = new imple.Conjunto();
         c.inicializarConjunto();
         Nodo aux = origen; // nodo viajero
