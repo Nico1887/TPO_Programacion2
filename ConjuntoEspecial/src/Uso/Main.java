@@ -12,7 +12,10 @@ public class Main {
     ConjuntoTDA, con la particularidad de que se permite más de una acepción de cada
     elemento agregado. Tal cual como en ConjuntoTDA, no existe orden alguno. Su
     especificación se muestra en el anexo, leer detenidamente los comentarios de cada método.*/
-
+    /* CASOS DE PRUEBA: driver que demuestra el ConjuntoMamushka (inicializar, guardar
+       repetidos, perteneceCant incluyendo un dato inexistente, elegir y sacar de a una
+       acepcion). Solo imprime resultados por consola; no recibe ni modifica estructuras
+       externas. */
     public static void testearMamushka() {
         ConjuntoMamushkaTDA mamushka = new ConjuntoMamushka();
         mamushka.inicializar();
@@ -44,6 +47,16 @@ public class Main {
 
     /*6) Se define un metodo que reciba una PilaTDA y devuelva un float (número real) con
     el porcentaje de cantidad de elementos pares de la pila. */
+    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar y contando, por un
+       lado, la cantidad de elementos pares y, por otro, la cantidad total de elementos. Al
+       terminar se restaura la pila original desde la auxiliar y se devuelve el porcentaje
+       (pares / total * 100).
+       COMPLEJIDAD: L (lineal) en la cantidad de elementos de la pila. Hay dos ciclos
+       secuenciales (uno para contar, otro para restaurar), cada uno L; L + L sigue siendo L.
+       JUSTIFICACION: las operaciones de pila (tope, apilar, desapilar) sobre la
+       implementacion dinamica son C (constante), por lo que el costo lo fija el recorrido.
+       PRESERVACION: se usa una pila auxiliar y, al finalizar, se devuelven todos los
+       elementos a la pila original, dejandola igual que al inicio. */
     public static float mostrarPorcentajePares(PilaTDA pila){
         float porcentajePares = 0;
         float cantidadPares = 0;
@@ -72,7 +85,17 @@ public class Main {
 
     /*7)Se define un metodo que reciba una PilaTDA y devuelva un ConjuntoTDA con los
     elementos repetidos de la pila. */
-
+    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Se mantiene un
+       conjunto auxiliar (vistos) con los elementos ya encontrados: si el tope ya pertenece
+       a vistos es un repetido y se agrega al conjunto resultado; en todo caso se agrega a
+       vistos. Al terminar se restaura la pila original desde la auxiliar.
+       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la pila, pero en
+       cada vuelta pertenece() y agregar() sobre el conjunto (lista enlazada) son L. Ciclo L
+       con cuerpo L -> P.
+       JUSTIFICACION: las operaciones de pila son C, pero las de conjunto recorren la lista
+       interna, lo que agrega el factor lineal que eleva el metodo a P.
+       PRESERVACION: se usa una pila auxiliar y se restaura la pila original al finalizar; el
+       conjunto resultado es una estructura nueva. */
     public static ConjuntoTDA elementosRepetidos(PilaTDA pila){
         ConjuntoTDA repetidos = new Conjunto();
         repetidos.inicializarConjunto();
@@ -103,7 +126,17 @@ public class Main {
     elementos de la original, sin ninguna repetición. Se debe dejar el primer representante de
     cada uno de los repetidos, respetando el orden en que aparecen todos los elementos en la
     original.*/
-
+    /* ESTRATEGIA: se recorre la cola original desacolando cada elemento hacia una cola
+       auxiliar (para poder restaurarla). Con un conjunto se lleva registro de los ya vistos:
+       la primera vez que aparece un elemento se agrega al conjunto y se acola en la cola
+       resultado; las apariciones siguientes se ignoran. Al terminar se restaura la cola
+       original desde la auxiliar.
+       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la cola, con
+       pertenece()/agregar() sobre el conjunto que son L. Ciclo L con cuerpo L -> P.
+       JUSTIFICACION: acolar/desacolar/primero son C; el costo lo aportan las operaciones de
+       conjunto, que recorren la lista interna.
+       PRESERVACION: se usa una cola auxiliar y se devuelve la cola original a su estado
+       inicial; la cola resultado es una estructura nueva. */
     public static ColaTDA colaSinRepetidos(ColaTDA colaOriginal) {
         ConjuntoTDA conjunto = new Conjunto();
         ColaTDA colaAux = new Cola();
@@ -132,6 +165,16 @@ public class Main {
 
     /*9) Se define un metodo que reciba una PilaTDA y una ColaTDA y devuelva un
     ConjuntoTDA con los elementos comunes de la pila y de la cola. */
+    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Por cada tope de
+       la pila se recorre toda la cola (desacolando hacia una cola auxiliar y restaurandola)
+       buscando una coincidencia; si el valor esta en ambas se agrega al conjunto resultado.
+       Al terminar se restauran tanto la pila como la cola.
+       COMPLEJIDAD: P (polinomico, ~n*m). Ciclo L sobre la pila con un ciclo L anidado sobre
+       la cola; ciclos anidados -> P.
+       JUSTIFICACION: las operaciones de pila y cola son C, pero el anidamiento de los dos
+       recorridos (por cada elemento de la pila se recorre toda la cola) eleva el metodo a P.
+       PRESERVACION: se usan estructuras auxiliares y se restauran la pila y la cola
+       originales; el conjunto resultado es una estructura nueva. */
     public static ConjuntoTDA obtenerElementosComunes(PilaTDA pila, ColaTDA cola){
         ConjuntoTDA comunes = new Conjunto();
         comunes.inicializarConjunto();
@@ -168,6 +211,17 @@ public class Main {
 
     /*10) Se define un método que reciba una PilaTDA y devuelva un DiccionarioSimpleTDA, en el cual se guardarán los
     elementos de la pila como claves, y la cantidad de apariciones de dicho elemento en la pila, como valores */
+    /* ESTRATEGIA: se recorre la pila desapilando hacia una pila auxiliar. Por cada tope se
+       consulta el conjunto de claves del diccionario: si la clave ya existe se recupera su
+       cantidad y se reescribe sumando 1; si no existe se agrega con cantidad 1. Al terminar
+       se restaura la pila original desde la auxiliar.
+       COMPLEJIDAD: P (polinomico, ~n^2). Ciclo L sobre los n elementos de la pila, pero en
+       cada vuelta claves()/pertenece()/recuperar()/agregar() sobre el diccionario y el
+       conjunto son L. Ciclo L con cuerpo L -> P.
+       JUSTIFICACION: las operaciones de pila son C; el factor lineal lo aportan las
+       operaciones de diccionario/conjunto que recorren sus listas internas.
+       PRESERVACION: se usa una pila auxiliar y se restaura la pila original; el diccionario
+       resultado es una estructura nueva. */
     public static DiccionarioSimpleTDA contarAparicionesPila(PilaTDA pilaOriginal) {
         DiccionarioSimpleTDA diccFinal = new DiccionarioSimple();
         PilaTDA pilaAux = new Pila();
@@ -235,6 +289,13 @@ public class Main {
 
     /*12) Se define un método que calcule la suma de los elementos con un valor impar de un
     ABB. */
+    /* ESTRATEGIA: recorrido recursivo del arbol. Si el arbol esta vacio aporta 0. Se toma el
+       valor de la raiz y, si es impar, se acumula; luego se suma recursivamente lo aportado
+       por el hijo izquierdo y por el hijo derecho.
+       COMPLEJIDAD: L (lineal) en la cantidad de nodos; recursivo, visita cada nodo una vez.
+       JUSTIFICACION: las consultas arbolVacio/raiz/hijoIzq/hijoDer son C (constante) y cada
+       nodo se evalua una sola vez.
+       PRESERVACION: solo se realizan consultas sobre el arbol; no se modifica. */
     public static int sumarImparesABB(ABBTDA arbol) {
         int suma = 0;
 
@@ -347,6 +408,8 @@ public class Main {
     }
 
 
+    /* Metodo auxiliar para imprimir una cola sin modificarla: se desacola hacia una cola
+       auxiliar mostrando cada elemento y luego se restaura la cola original. */
     public static void imprimirCola(ColaTDA cola) {
         ColaTDA aux = new Cola();
         aux.inicializarCola();
