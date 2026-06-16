@@ -1,0 +1,41 @@
+DiccionarioSimpleMod/DiccionarioSimpleMod.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+ConjuntoEspecial/ConjuntoEspecial.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+MetodosExternos/src/Uso/Main.java
+  s_55921b1175babf::t_689157b3a5b80b 1-581
+MultiPila/MultiPila.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+.idea/modules.xml
+  s_55921b1175babf::t_af98fdce8ad322 5-10,13
+.gitignore
+  s_55921b1175babf::t_48676c1b15a91e 1-8
+MetodosExternos/MetodosExternos.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+TODO.md
+  s_55921b1175babf::t_fa6c7179ed5082 11
+ConjuntoEspecial/src/Uso/MainConjuntoEspecial.java
+  s_55921b1175babf::t_a67bc495d64671 1-63
+README.md
+  s_55921b1175babf::t_a36ab45d55e589 38-47
+DiccionarioSimpleConColaPrioridad/DiccionarioSimpleConColaPrioridad.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+ConjuntoMamushka/ConjuntoMamushka.iml
+  s_55921b1175babf::t_ec1aebc8e93edd 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "d952ff43d3f7f085240d5677ebb252d61ef031e7",
+  "prompts": {},
+  "sessions": {
+    "s_55921b1175babf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a62c03f-5244-4976-919d-ccfc57a6aeb2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "bohledevs <facundo.luis.bohle@gmail.com>"
+    }
+  }
+}
