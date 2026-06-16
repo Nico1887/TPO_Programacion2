@@ -1,49 +1,22 @@
 package Uso;
-import Interfaz.ConjuntoEspecialTDA;
-import Imple.ConjuntoEspecial;
-import Interfaz.ConjuntoMamushkaTDA;
-import Imple.ConjuntoMamushka;
+
 import imple.*;
 import tda.*;
 
+/*
+ * ============================================================================
+ * METODOS EXTERNOS DEL TPO (Parte 1, puntos 6 a 15)
+ * ----------------------------------------------------------------------------
+ * Estos ejercicios NO definen un TDA nuevo: son metodos que reciben las
+ * estructuras de la materia (Pila, Cola, ABB, Grafo, DiccionarioSimple,
+ * DiccionarioMultiple, Conjunto) provistas por P2lib.jar y devuelven un
+ * resultado, preservando siempre las estructuras recibidas.
+ *
+ * Por eso, tal como pide la consigna, todos viven en un UNICO Main general
+ * (los TDA nuevos -puntos 1 a 5- tienen cada uno su propio Main en su modulo).
+ * ============================================================================
+ */
 public class Main {
-
-    /*2) Se define un nuevo TDA denominado ConjuntoMamushkaTDA basado en
-    ConjuntoTDA, con la particularidad de que se permite más de una acepción de cada
-    elemento agregado. Tal cual como en ConjuntoTDA, no existe orden alguno. Su
-    especificación se muestra en el anexo, leer detenidamente los comentarios de cada método.*/
-    /* CASOS DE PRUEBA: driver que demuestra el ConjuntoMamushka (inicializar, guardar
-       repetidos, perteneceCant incluyendo un dato inexistente, elegir y sacar de a una
-       acepcion). Solo imprime resultados por consola; no recibe ni modifica estructuras
-       externas. */
-    public static void testearMamushka() {
-        ConjuntoMamushkaTDA mamushka = new ConjuntoMamushka();
-        mamushka.inicializar();
-
-        System.out.println("--- PRUEBAS DE INICIALIZACIÓN ---");
-        System.out.println("¿Está vacío al principio?: " + mamushka.estaVacio());
-
-        System.out.println("\n--- PRUEBAS DE GUARDAR ---");
-        mamushka.guardar(5);
-        mamushka.guardar(5);
-        mamushka.guardar(5);
-        mamushka.guardar(8);
-
-        System.out.println("¿Está vacío ahora?: " + mamushka.estaVacio());
-        System.out.println("¿Cuántas veces está el 5?: " + mamushka.perteneceCant(5));
-        System.out.println("¿Cuántas veces está el 8?: " + mamushka.perteneceCant(8));
-
-        System.out.println("\n--- PRUEBA DE ELEGIR ---");
-        System.out.println("Elemento elegido al azar: " + mamushka.elegir());
-
-        System.out.println("\n--- PRUEBAS DE SACAR ---");
-        mamushka.sacar(5);
-        System.out.println("Sacamos un 5. ¿Cuántos quedan?: " + mamushka.perteneceCant(5));
-
-        mamushka.sacar(8);
-        System.out.println("Sacamos el 8. ¿Cuántos quedan?: " + mamushka.perteneceCant(8));
-        System.out.println("Elemento elegido al final: " + mamushka.elegir());
-    }
 
     /*6) Se define un metodo que reciba una PilaTDA y devuelva un float (número real) con
     el porcentaje de cantidad de elementos pares de la pila. */
@@ -239,9 +212,9 @@ public class Main {
             pilaAux.apilar(topeActual);
             pilaOriginal.desapilar();
         }
-        while (!pilaAux.pilaVacia()) { //
-            pilaOriginal.apilar(pilaAux.tope()); //
-            pilaAux.desapilar(); //
+        while (!pilaAux.pilaVacia()) {
+            pilaOriginal.apilar(pilaAux.tope());
+            pilaAux.desapilar();
         }
         return diccFinal;
     }
@@ -454,150 +427,80 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Desde acá llamamos a la prueba para no ensuciar el main principal
-        testearMamushka();
-        /*Testeos para el punto 1*/
+        /* ===================== PUNTO 6: mostrarPorcentajePares ===================== */
+        System.out.println("=== Punto 6: mostrarPorcentajePares ===");
+        PilaTDA pila6 = new Pila();
+        pila6.inicializarPila();
+        pila6.apilar(1);
+        pila6.apilar(2);
+        pila6.apilar(3);
+        pila6.apilar(4); // 2 pares de 4 -> 50%
+        System.out.println("Porcentaje de pares (deberia ser 50.0): " + mostrarPorcentajePares(pila6) + "%");
+        System.out.println("Preservacion (tope deberia seguir siendo 4): " + pila6.tope());
 
-        /*ConjuntoEspecialTDA conjunto = new ConjuntoEspecial();
-        conjunto.inicializarConjunto();
-        ConjuntoEspecialTDA.Respuesta res;
+        /* ===================== PUNTO 7: elementosRepetidos ===================== */
+        System.out.println();
+        System.out.println("=== Punto 7: elementosRepetidos ===");
+        PilaTDA pila7 = new Pila();
+        pila7.inicializarPila();
+        pila7.apilar(10);
+        pila7.apilar(20);
+        pila7.apilar(30);
+        pila7.apilar(20);
+        pila7.apilar(10); // repetidos: 10 y 20
+        System.out.print("Repetidos (deberian estar 10 y 20, no el 30): ");
+        imprimirConjunto(elementosRepetidos(pila7));
+        System.out.println("Preservacion (tope deberia seguir siendo 10): " + pila7.tope());
 
-        System.out.println("Aca se prueba si el conjunto recien inicializado esta vacio (deberia ser true):");
-        System.out.println(conjunto.conjuntoVacio());
+        /* ===================== PUNTO 8: colaSinRepetidos ===================== */
+        System.out.println();
+        System.out.println("=== Punto 8: colaSinRepetidos ===");
+        ColaTDA cola8 = new Cola();
+        cola8.inicializarCola();
+        cola8.acolar(9);
+        cola8.acolar(10);
+        cola8.acolar(7);
+        cola8.acolar(10);
+        cola8.acolar(5);
+        cola8.acolar(7);
+        System.out.print("Cola sin repetidos (deberia ser 9 10 7 5): ");
+        imprimirCola(colaSinRepetidos(cola8));
+        System.out.print("Preservacion (la original sigue 9 10 7 10 5 7): ");
+        imprimirCola(cola8);
 
-        System.out.println("Aca se prueba elegir en un conjunto vacio (el error deberia ser true):");
-        res = conjunto.elegir();
-        System.out.println(res.error);
+        /* ===================== PUNTO 9: obtenerElementosComunes ===================== */
+        System.out.println();
+        System.out.println("=== Punto 9: obtenerElementosComunes ===");
+        PilaTDA pila9 = new Pila();
+        pila9.inicializarPila();
+        pila9.apilar(10);
+        pila9.apilar(20);
+        pila9.apilar(30);
+        ColaTDA cola9 = new Cola();
+        cola9.inicializarCola();
+        cola9.acolar(20);
+        cola9.acolar(40);
+        cola9.acolar(10);
+        System.out.print("Comunes pila-cola (deberian ser 10 y 20): ");
+        imprimirConjunto(obtenerElementosComunes(pila9, cola9));
+        System.out.println("Preservacion pila (tope 30): " + pila9.tope()
+                + " | cola (primero 20): " + cola9.primero());
 
-        System.out.println("Aca se prueba agregar un valor nuevo (el error deberia ser false):");
-        res = conjunto.agregar(10);
-        System.out.println(res.error);
+        /* ===================== PUNTO 10: contarAparicionesPila ===================== */
+        System.out.println();
+        System.out.println("=== Punto 10: contarAparicionesPila ===");
+        PilaTDA pila10 = new Pila();
+        pila10.inicializarPila();
+        pila10.apilar(5);
+        pila10.apilar(5);
+        pila10.apilar(5);
+        pila10.apilar(8);
+        DiccionarioSimpleTDA frecuencias = contarAparicionesPila(pila10);
+        System.out.println("Apariciones del 5 (deberia ser 3): " + frecuencias.recuperar(5));
+        System.out.println("Apariciones del 8 (deberia ser 1): " + frecuencias.recuperar(8));
+        System.out.println("Preservacion (tope deberia seguir siendo 8): " + pila10.tope());
 
-        System.out.println("Aca se prueba agregar otro valor nuevo (el error deberia ser false):");
-        res = conjunto.agregar(20);
-        System.out.println(res.error);
-
-        System.out.println("Aca se prueba agregar un valor repetido (el error deberia ser true):");
-        res = conjunto.agregar(10);
-        System.out.println(res.error);
-
-        System.out.println("Aca se prueba si el conjunto ya no esta vacio (deberia ser false):");
-        System.out.println(conjunto.conjuntoVacio());
-
-        System.out.println("Aca se prueba elegir en un conjunto con elementos (el error deberia ser false y mostrar un numero):");
-        res = conjunto.elegir();
-        System.out.println("Error: " + res.error + " - Valor: " + res.rta);
-
-        System.out.println("Aca se prueba sacar un elemento que existe (el error deberia ser false):");
-        res = conjunto.sacar(10);
-        System.out.println(res.error);
-
-        System.out.println("Aca se prueba sacar un elemento que ya no existe (el error deberia ser true):");
-        res = conjunto.sacar(10);
-        System.out.println(res.error);*/
-
-        /*Punto 6*/
-        /*PilaTDA pila1 = new Pila();
-        pila1.inicializarPila();
-        pila1.apilar(1);
-        pila1.apilar(2);
-        pila1.apilar(3);
-        pila1.apilar(4);
-        System.out.println("La cantidad de elementos pares de la pila es: " + mostrarPorcentajePares(pila1) + "%");
-        */
-
-        /*Punto 7*/
-        /*PilaTDA miPila = new Pila();
-        miPila.inicializarPila();
-
-        System.out.println("Aca se prueba buscar repetidos en una pila vacia (deberia dar true al consultar si el conjunto esta vacio):");
-        ConjuntoTDA resultado1 = elementosRepetidos(miPila);
-        System.out.println(resultado1.conjuntoVacio());
-
-        miPila.apilar(10);
-        miPila.apilar(20);
-        miPila.apilar(30);
-
-        System.out.println("Aca se prueba una pila sin repetidos (deberia dar true al consultar si el conjunto esta vacio):");
-        ConjuntoTDA resultado2 = elementosRepetidos(miPila);
-        System.out.println(resultado2.conjuntoVacio());
-
-        miPila.apilar(20);
-        miPila.apilar(40);
-        miPila.apilar(10);
-
-        System.out.println("Aca se prueba una pila con elementos repetidos (el 10 y el 20 deberian pertenecer, el 30 no):");
-        ConjuntoTDA resultado3 = elementosRepetidos(miPila);
-        System.out.println("Pertenece el 10: " + resultado3.pertenece(10));
-        System.out.println("Pertenece el 20: " + resultado3.pertenece(20));
-        System.out.println("Pertenece el 30: " + resultado3.pertenece(30));
-
-        System.out.println("Aca se prueba que la pila original no haya perdido elementos revisando el tope actual (deberia ser 10):");
-        System.out.println(miPila.tope());*/
-
-        /*Punto 8*/
-        ColaTDA colaOriginal = new Cola();
-        colaOriginal.inicializarCola();
-        colaOriginal.acolar(9);
-        colaOriginal.acolar(10);
-        colaOriginal.acolar(7);
-        colaOriginal.acolar(10);
-        colaOriginal.acolar(5);
-        colaOriginal.acolar(7);
-        ColaTDA colaFinal = colaSinRepetidos(colaOriginal);
-        imprimirCola(colaFinal);
-
-        /*Punto 9*/
-        /*
-        PilaTDA miPila = new Pila();
-        miPila.inicializarPila();
-        ColaTDA miCola = new Cola();
-        miCola.inicializarCola();
-
-        System.out.println("Aca se prueba con pila y cola vacias (deberia dar true al consultar si el conjunto esta vacio):");
-        ConjuntoTDA resultado1 = obtenerElementosComunes(miPila, miCola);
-        System.out.println(resultado1.conjuntoVacio());
-
-        miPila.apilar(10);
-        miPila.apilar(20);
-        miPila.apilar(30);
-
-        miCola.acolar(40);
-        miCola.acolar(50);
-
-        System.out.println("Aca se prueba sin elementos en comun (deberia dar true al consultar si el conjunto esta vacio):");
-        ConjuntoTDA resultado2 = obtenerElementosComunes(miPila, miCola);
-        System.out.println(resultado2.conjuntoVacio());
-
-        miCola.acolar(20);
-        miCola.acolar(10);
-        miCola.acolar(60);
-
-        System.out.println("Aca se prueba con elementos en comun (el 10 y el 20 deberian pertenecer, el 30 no):");
-        ConjuntoTDA resultado3 = obtenerElementosComunes(miPila, miCola);
-        System.out.println("Pertenece el 10: " + resultado3.pertenece(10));
-        System.out.println("Pertenece el 20: " + resultado3.pertenece(20));
-        System.out.println("Pertenece el 30: " + resultado3.pertenece(30));
-
-        System.out.println("Aca se prueba que la pila y la cola no hayan perdido elementos (deberian ser 30 y 40 respectivamente):");
-        System.out.println("Tope pila: " + miPila.tope());
-        System.out.println("Primero cola: " + miCola.primero());*/
-
-        /*PUNTO 12*/
-        ABBTDA arbol = new ABB();
-        arbol.inicializarArbol();
-        arbol.agregarElem(50);
-        arbol.agregarElem(45);
-        arbol.agregarElem(53);
-        arbol.agregarElem(27);
-        arbol.agregarElem(60);
-        arbol.agregarElem(52);
-        arbol.agregarElem(17);
-        int resultadoABB = sumarImparesABB(arbol);
-        System.out.println(resultadoABB);
-
-
-        /*PUNTO 11 - valoresUnicos*/
+        /* ===================== PUNTO 11: valoresUnicos ===================== */
         System.out.println();
         System.out.println("=== Punto 11: valoresUnicos ===");
         DiccionarioMultipleTDA dicc = new DiccionarioMultiple();
@@ -608,20 +511,28 @@ public class Main {
         dicc.agregar(2, 30);
         dicc.agregar(3, 10); // 10 repetido respecto de la clave 1
         dicc.agregar(3, 40);
-
-        ColaTDA valores = valoresUnicos(dicc);
         System.out.print("Valores unicos (deberian aparecer 10, 20, 30 y 40 sin repetir): ");
-        imprimirCola(valores);
-
-        System.out.println("Preservacion del diccionario (las claves 1, 2 y 3 deben seguir presentes):");
-        ConjuntoTDA clavesDicc = dicc.claves();
-        System.out.println("Pertenece la clave 1: " + clavesDicc.pertenece(1));
-        System.out.println("Pertenece la clave 2: " + clavesDicc.pertenece(2));
-        System.out.println("Pertenece la clave 3: " + clavesDicc.pertenece(3));
-        System.out.print("Valores de la clave 1 (deberian ser 10 y 20): ");
+        imprimirCola(valoresUnicos(dicc));
+        System.out.print("Preservacion (valores de la clave 1 siguen siendo 10 y 20): ");
         imprimirConjunto(dicc.recuperar(1));
 
-        /*PUNTO 13 - hojasPares*/
+        /* ===================== PUNTO 12: sumarImparesABB ===================== */
+        System.out.println();
+        System.out.println("=== Punto 12: sumarImparesABB ===");
+        ABBTDA arbol12 = new ABB();
+        arbol12.inicializarArbol();
+        arbol12.agregarElem(50);
+        arbol12.agregarElem(45);
+        arbol12.agregarElem(53);
+        arbol12.agregarElem(27);
+        arbol12.agregarElem(60);
+        arbol12.agregarElem(52);
+        arbol12.agregarElem(17);
+        // impares: 45 + 53 + 27 + 17 = 142
+        System.out.println("Suma de impares (deberia ser 142): " + sumarImparesABB(arbol12));
+        System.out.println("Preservacion (la raiz debe seguir siendo 50): " + arbol12.raiz());
+
+        /* ===================== PUNTO 13: hojasPares ===================== */
         System.out.println();
         System.out.println("=== Punto 13: hojasPares ===");
         ABBTDA arbol13 = new ABB();
@@ -633,11 +544,11 @@ public class Main {
         arbol13.agregarElem(60);
         arbol13.agregarElem(52);
         arbol13.agregarElem(17);
-        // Hojas del arbol: 17, 52 y 60 -> pares: 52 y 60 => 2
+        // Hojas: 17, 52 y 60 -> pares: 52 y 60 => 2
         System.out.println("Cantidad de hojas pares (deberia ser 2): " + hojasPares(arbol13));
-        System.out.println("Preservacion del arbol (la raiz debe seguir siendo 50): " + arbol13.raiz());
+        System.out.println("Preservacion (la raiz debe seguir siendo 50): " + arbol13.raiz());
 
-        /*PUNTO 14 - verticesPuente*/
+        /* ===================== PUNTO 14: verticesPuente ===================== */
         System.out.println();
         System.out.println("=== Punto 14: verticesPuente ===");
         GrafoTDA grafo = new Grafo();
@@ -647,36 +558,24 @@ public class Main {
         grafo.agregarVertice(3);
         grafo.agregarVertice(4);
         grafo.agregarVertice(5);
-        // Buscamos puentes de o=1 a d=5
         grafo.agregarArista(1, 2, 1); // 1->2
         grafo.agregarArista(2, 5, 1); // 2->5  => 2 es puente
         grafo.agregarArista(1, 3, 1); // 1->3
         grafo.agregarArista(3, 5, 1); // 3->5  => 3 es puente
-        grafo.agregarArista(1, 4, 1); // 1->4
-        // 4 NO va a 5, asi que no es puente
+        grafo.agregarArista(1, 4, 1); // 1->4 (4 no va a 5, no es puente)
         grafo.agregarArista(2, 3, 1); // arista extra que no afecta el resultado
-
-        ConjuntoTDA puentes = verticesPuente(grafo, 1, 5);
         System.out.print("Vertices puente de 1 a 5 (deberian ser 2 y 3): ");
-        imprimirConjunto(puentes);
+        imprimirConjunto(verticesPuente(grafo, 1, 5));
+        System.out.println("Preservacion (la arista 1->2 debe seguir existiendo): " + grafo.existeArista(1, 2));
 
-        System.out.println("Preservacion del grafo (la arista 1->2 debe seguir existiendo): " + grafo.existeArista(1, 2));
-        System.out.print("Vertices del grafo siguen intactos: ");
-        imprimirConjunto(grafo.vertices());
-
-        /*PUNTO 15 - gradoVertice*/
+        /* ===================== PUNTO 15: gradoVertice ===================== */
         System.out.println();
         System.out.println("=== Punto 15: gradoVertice ===");
         // Reutilizamos el grafo del punto 14.
-        // Vertice 1: salidas a 2, 3, 4 (3 salidas), entradas: ninguna => grado 3
         System.out.println("Grado del vertice 1 (deberia ser 3): " + gradoVertice(grafo, 1));
-        // Vertice 5: salidas: ninguna, entradas desde 2 y 3 (2 entradas) => grado -2
         System.out.println("Grado del vertice 5 (deberia ser -2): " + gradoVertice(grafo, 5));
-        // Vertice 2: salidas a 5 y 3 (2 salidas), entradas desde 1 (1 entrada) => grado 1
         System.out.println("Grado del vertice 2 (deberia ser 1): " + gradoVertice(grafo, 2));
-
-        System.out.println("Preservacion del grafo (la arista 2->5 debe seguir existiendo): " + grafo.existeArista(2, 5));
-
+        System.out.println("Preservacion (la arista 2->5 debe seguir existiendo): " + grafo.existeArista(2, 5));
     }
 
 }

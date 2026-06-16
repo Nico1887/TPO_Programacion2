@@ -8,7 +8,7 @@ correctamente, pero todavía **no tienen** los bloques formales de entrega que p
 agregárselos más adelante, sin modificar la lógica:
 
 - [ ] Ej 1 — `ConjuntoEspecial` (`ConjuntoEspecial/src/Imple/ConjuntoEspecial.java`)
-- [ ] Ej 6 — `mostrarPorcentajePares` (`ConjuntoEspecial/src/Uso/Main.java`)
+- [ ] Ej 6 — `mostrarPorcentajePares` (`MetodosExternos/src/Uso/Main.java`)
 - [ ] Ej 7 — `elementosRepetidos`
 - [ ] Ej 8 — `colaSinRepetidos`
 - [ ] Ej 9 — `obtenerElementosComunes`

@@ -35,16 +35,16 @@ Implementar nuevos TDA y resolver problemas utilizando exclusivamente las estruc
 | 3 | MultiPilaTDA | ✔️ | `MultiPila/src` |
 | 4 | DiccionarioSimpleModTDA | ✔️ | `DiccionarioSimpleMod/src` |
 | 5 | DiccionarioSimpleTDA usando ColaPrioridadTDA | ✔️ | `DiccionarioSimpleConColaPrioridad/src` |
-| 6 | % de pares en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 7 | Repetidos en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 8 | Cola sin repetidos | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 9 | Intersección pila-cola | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 10 | Frecuencias en pila | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 11 | Valores únicos de DiccionarioMultiple | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 12 | Suma de impares ABB | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 13 | Hojas pares ABB | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 14 | Vértices puente en grafo | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
-| 15 | Grado de vértice | ✔️ | `ConjuntoEspecial/src/Uso/Main.java` |
+| 6 | % de pares en pila | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 7 | Repetidos en pila | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 8 | Cola sin repetidos | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 9 | Intersección pila-cola | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 10 | Frecuencias en pila | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 11 | Valores únicos de DiccionarioMultiple | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 12 | Suma de impares ABB | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 13 | Hojas pares ABB | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 14 | Vértices puente en grafo | ✔️ | `MetodosExternos/src/Uso/Main.java` |
+| 15 | Grado de vértice | ✔️ | `MetodosExternos/src/Uso/Main.java` |
 
 ---
 
